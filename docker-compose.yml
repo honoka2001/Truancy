@@ -1,0 +1,34 @@
+version: "3"
+services:
+    db:
+        image: mysql:5.7
+        environment:
+            MYSQL_ROOT_PASSWORD: password
+            MYSQL_DATABASE: root
+        volumes:
+            - ./db/mysql_data:/var/lib/mysql
+        ports:
+            - "3316:3306"
+        command: --innodb-use-native-aio=0
+
+    api:
+        build: ./api
+        command: sh -c "rm -f tmp/pids/server.pid && rails s -p 3000 -b '0.0.0.0'"
+        volumes:
+            - ./api:/app_name
+        ports:
+            - "3000:3000"
+        links:
+            - db
+
+    front:
+        build: ./front
+        tty: true
+        environment:
+            - NODE_ENV=production node server.js
+            - CHOKIDAR_USEPOLLING=true
+        volumes:
+            - ./app:/usr/src/app
+        command: sh -c "yarn dev"
+        ports:
+            - "8000:3000"
