@@ -1,42 +1,53 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import firebase from "./firebase";
+import { RepositoryFactory } from "../repositories/RepositoryFactory";
+const userRepository = RepositoryFactory.get("users");
 
-class App extends Component {
-  state = {
-    user: null,
-  };
+function App() {
+  const [userData, setUserData] = useState([]);
 
-  componentDidMount() {
-    firebase.auth().onAuthStateChanged((user) => {
-      this.setState({ user });
-      console.log(user);
-    });
+  async function userPost() {
+    try {
+      const res = await userRepository.post({
+        user: {
+          uid: user.uid,
+        },
+      });
+      console.log(res);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
-  login() {
+  useEffect(() => {
+    firebase.auth().onAuthStateChanged((user) => {
+      console.log(user);
+      setUserData(user);
+      userPost();
+    });
+  }, []);
+
+  async function login() {
     const provider = new firebase.auth.GoogleAuthProvider();
     firebase.auth().signInWithRedirect(provider);
+    userPost();
   }
 
-  logout() {
+  function logout() {
     firebase.auth().signOut();
   }
 
-  render() {
-    return (
-      <div className="App">
-        <p className="App-intro">
-          UID: {this.state.user && this.state.user.uid}
-        </p>
+  return (
+    <div className="App">
+      <p className="App-intro">UID: {userData && userData.uid}</p>
 
-        {this.state.user ? (
-          <button onClick={this.logout}>Google Logout</button>
-        ) : (
-          <button onClick={this.login}>Google Login</button>
-        )}
-      </div>
-    );
-  }
+      {userData ? (
+        <button onClick={logout}>Google Logout</button>
+      ) : (
+        <button onClick={login}>Google Login</button>
+      )}
+    </div>
+  );
 }
 
 export default App;
