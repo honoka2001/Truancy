@@ -10,4 +10,5 @@ class User < ApplicationRecord
 
 
   validates :uid, presence: true
+  attribute :target, :integer, default: 10
 end
