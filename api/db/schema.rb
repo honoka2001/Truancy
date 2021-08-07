@@ -10,11 +10,39 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_04_040536) do
+ActiveRecord::Schema.define(version: 2021_08_04_045208) do
 
   create_table "colors", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.string "code"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "commits", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "definition_id"
+    t.string "message"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["definition_id"], name: "index_commits_on_definition_id"
+    t.index ["user_id"], name: "index_commits_on_user_id"
+  end
+
+  create_table "definitions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.string "detail"
+    t.bigint "color_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["color_id"], name: "index_definitions_on_color_id"
+    t.index ["user_id"], name: "index_definitions_on_user_id"
+  end
+
+  create_table "relationships", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "follower_id"
+    t.integer "followed_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -27,4 +55,8 @@ ActiveRecord::Schema.define(version: 2021_08_04_040536) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "commits", "definitions"
+  add_foreign_key "commits", "users"
+  add_foreign_key "definitions", "colors"
+  add_foreign_key "definitions", "users"
 end
