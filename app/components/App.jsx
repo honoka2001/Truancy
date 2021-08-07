@@ -1,7 +1,18 @@
 import React, { useState, useEffect } from "react";
 import firebase from "./firebase";
 import { RepositoryFactory } from "../repositories/RepositoryFactory";
+import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
+
 const userRepository = RepositoryFactory.get("users");
+
+const uiConfig = {
+  signInFlow: 'popup',
+  signInSuccessUrl: "/",
+  signInOptions: [
+      firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+      // firebase.auth.GithubAuthProvider.PROVIDER_ID,
+  ],
+}
 
 function App() {
     const [userData, setUserData] = useState([]);
@@ -43,7 +54,11 @@ function App() {
             {userData ? (
                 <button onClick={logout}>Google Logout</button>
             ) : (
-                <button onClick={login}>Google Login</button>
+                <StyledFirebaseAuth
+                  onClick={login}
+                  uiConfig={uiConfig}
+                  firebaseAuth={firebase.auth()}
+                />
             )}
         </div>
     );
