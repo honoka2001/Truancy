@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_07_094111) do
+ActiveRecord::Schema.define(version: 2021_08_10_072156) do
 
   create_table "colors", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -41,6 +41,17 @@ ActiveRecord::Schema.define(version: 2021_08_07_094111) do
     t.index ["user_id"], name: "index_definitions_on_user_id"
   end
 
+  create_table "motivations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "daily_total_commits"
+    t.integer "motivation"
+    t.date "date"
+    t.integer "total_param"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_motivations_on_user_id"
+  end
+
   create_table "relationships", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "follower_id"
     t.integer "followed_id"
@@ -61,4 +72,5 @@ ActiveRecord::Schema.define(version: 2021_08_07_094111) do
   add_foreign_key "commits", "users"
   add_foreign_key "definitions", "colors"
   add_foreign_key "definitions", "users"
+  add_foreign_key "motivations", "users"
 end
