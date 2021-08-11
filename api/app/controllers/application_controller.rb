@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::API
-  def current_user(user_id)
-    current_user = User.find_by(id: user_id)
+  def current_user(uid)
+    current_user = User.find_by(uid: uid)
   end
 end
