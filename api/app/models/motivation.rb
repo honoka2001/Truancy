@@ -20,4 +20,15 @@ class Motivation < ApplicationRecord
                                                                                                   date: diff_end_date).daily_total_commits.to_f
         diff_param = diff * diff_weight
       end
+
+      # 継続量の算出
+      def get_avg_param
+        avg_weight = 1
+        avg_start_date = date.ago(3.days)
+        avg_end_date = date.ago(1.days)
+
+        avg = Motivation.where(user_id: user_id,
+                               date: avg_start_date..avg_end_date).sum(:daily_total_commits) / 3.to_f
+        avg_param = avg * avg_weight
+      end
 end
