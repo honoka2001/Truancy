@@ -1,6 +1,9 @@
 class Motivation < ApplicationRecord
   belongs_to :user
   validates :date, uniqueness: { scope: :user_id }
+
+  # モチベーション算出
+  def get_motivation
     # モチベーション参考値の算出
     def get_total_param
       # 偏差の算出
@@ -35,4 +38,11 @@ class Motivation < ApplicationRecord
       end
       total_param = get_sub_param + get_diff_param + get_avg_param
     end
+
+    update(total_param: get_total_param)
+    avg_start_date = date.ago(2.days)
+    avg_end_date = date
+    max = Motivation.where(user_id: user_id, date: avg_start_date..avg_end_date).maximum(:total_param)
+    update(motivation: total_param / max.to_f * 100)
+  end
 end
