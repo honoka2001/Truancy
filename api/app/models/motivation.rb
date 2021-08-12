@@ -1,6 +1,8 @@
 class Motivation < ApplicationRecord
   belongs_to :user
   validates :date, uniqueness: { scope: :user_id }
+    # モチベーション参考値の算出
+    def get_total_param
       # 偏差の算出
       def get_sub_param
         sub_weight = 1.5
@@ -31,4 +33,6 @@ class Motivation < ApplicationRecord
                                date: avg_start_date..avg_end_date).sum(:daily_total_commits) / 3.to_f
         avg_param = avg * avg_weight
       end
+      total_param = get_sub_param + get_diff_param + get_avg_param
+    end
 end
