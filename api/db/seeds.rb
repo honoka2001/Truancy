@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 #
@@ -41,7 +43,7 @@ Definition.create!(
 1..20.times do |n|
   rand(1..10).times do |i|
     Commit.create!(
-      date: Time.parse("2021/08/#{n+1}"),
+      date: Time.parse("2021/08/#{n + 1}"),
       message: "test#{i + 1}@test.com",
       definition_id: rand(1..3),
       user_id: 1
@@ -51,7 +53,7 @@ end
 
 1..20.times do |n|
   Motivation.create!(
-    date: Time.parse("2021/08/#{n+1}"),
+    date: Time.parse("2021/08/#{n + 1}"),
     user_id: 1,
     daily_total_commits: rand(1..20)
   )

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class MotivationsController < ApplicationController
   def index
     user = User.find(1)

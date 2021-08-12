@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class User < ApplicationRecord
   has_many :commits, dependent: :destroy
   has_many :definitions, dependent: :destroy

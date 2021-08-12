@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class UsersController < ApplicationController
   def create
     if user = User.find_by(user_create_params) # (uid:uid)
