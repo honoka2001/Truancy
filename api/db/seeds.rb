@@ -48,3 +48,11 @@ Definition.create!(
     )
   end
 end
+
+1..20.times do |n|
+  Motivation.create!(
+    date: Time.parse("2021/08/#{n+1}"),
+    user_id: 1,
+    daily_total_commits: rand(1..20)
+  )
+end
