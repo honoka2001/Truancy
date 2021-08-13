@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class CommitsController < ApplicationController
   def index
     user = User.find_by(commit_index_params)
@@ -9,7 +7,7 @@ class CommitsController < ApplicationController
 
   def create
     commit = Commit.new(commit_create_params)
-    if Commit.save
+    if commit.save
       render json: { status: 'SUCCESS' }
     else
       render json: { status: 'ERROR' }
