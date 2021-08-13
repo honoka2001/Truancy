@@ -59,6 +59,7 @@ export default function CommitModal(props) {
       console.log(error);
     }
   };
+  
 
   return (
     <div>
