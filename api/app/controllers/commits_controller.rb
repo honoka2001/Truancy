@@ -1,16 +1,16 @@
 class CommitsController < ApplicationController
-  def index
-    user = User.find_by(commit_index_params)
-    commits = user.commits
-    render json: commit
-  end
+  # def index
+  #   user = User.find_by(commit_index_params)
+  #   commits = user.commits
+  #   render json: commit
+  # end
 
   def create
     commit = Commit.new(commit_create_params)
     if commit.save
       render json: { status: 'SUCCESS' }
     else
-      render json: { status: 'ERROR' }
+      render json: { status: 'ERROR'  }
     end
   end
 
