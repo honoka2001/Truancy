@@ -33,7 +33,7 @@ export default function CommitModal(props) {
 
   return (
     <div>
-      <CommitIndex userData={userData} />
+      <CommitIndex userData={userData} userId={userId} />
       <InputCommit userId={userId} />
     </div>
   )
