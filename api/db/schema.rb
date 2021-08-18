@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -12,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_210_810_072_156) do
+ActiveRecord::Schema.define(version: 20_210_818_035_019) do
   create_table 'colors', options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8', force: :cascade do |t|
     t.string 'name'
     t.string 'code'
@@ -50,6 +48,9 @@ ActiveRecord::Schema.define(version: 20_210_810_072_156) do
     t.bigint 'user_id'
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
+    t.float 'sub_param'
+    t.float 'diff_param'
+    t.float 'avg_param'
     t.index ['user_id'], name: 'index_motivations_on_user_id'
   end
 
