@@ -1,30 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { RepositoryFactory } from "../repositories/RepositoryFactory";
 import firebase from "../components/firebase";
+import InputCommit from "../components/commits/InputCommit";
+import CommitIndex from "../components/commits";
 
 const userRepository = RepositoryFactory.get("users");
-const commitRepository = RepositoryFactory.get("commits");
 
 export default function CommitModal(props) {
-  const [definition, setDefinition] = useState("math");
-  const [message, setMessage] = useState("");
-  const [date, setDate] = useState("");
-  const [count, setCount] = useState(1);
-  const [userData, setUserData] = useState([]);
+  const [userData, setUserData] = useState("");
   const [userId, setUserId] = useState("");
-  
-  const handleDefinitionChange = (e) => {
-    setDefinition(e.target.value);
-  };
-  const handleMessageChange = (e) => {
-    setMessage(e.target.value);
-  };
-  const handleDateChange = (e) => {
-    setDate(e.target.value);
-  };
-  const handleCountChaneg = (e) => {
-    setCount(e.target.value);
-  }
 
   async function userPost(uid) {
     try {
@@ -42,39 +26,16 @@ export default function CommitModal(props) {
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
-      console.log(user);
       setUserData(user);
       userPost(user.uid);
     });
   }, []);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const res = await commitRepository.post({
-        commit: {
-          user_id: userId,
-          definition_id: 1,
-          message: message,
-          date: date,
-          count: count,
-        },
-      });
-      console.log(res);
-      // console.log(userId);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   return (
     <div>
-      <form onSubmit={handleSubmit}>
-        <input type="text" name="message" onChange={handleMessageChange} />
-        <input type="date" name="date" onChange={handleDateChange} />
-        <input type="number" name="count" onChange={handleCountChaneg} />
-        <input type="submit" value="登録" />
-      </form>
+      <CommitIndex userData={userData} />
+      <InputCommit userId={userId} />
     </div>
-  );
+  )
+    
 }
