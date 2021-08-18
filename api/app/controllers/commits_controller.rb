@@ -1,9 +1,9 @@
 class CommitsController < ApplicationController
-  # def index
-  #   user = User.find_by(commit_index_params)
-  #   commits = user.commits
-  #   render json: commit
-  # end
+  def index
+    user = User.find_by(commit_index_params)
+    commits = user.commits
+    render json: commit
+  end
 
   def create
     commit = Commit.new(commit_create_params)
@@ -12,6 +12,11 @@ class CommitsController < ApplicationController
     else
       render json: { status: 'ERROR'  }
     end
+  end
+
+  def destroy
+    @commit.destroy
+    render json: { @commit }
   end
 
   private
