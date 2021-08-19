@@ -1,15 +1,22 @@
-# frozen_string_literal: true
-
 class CommitsController < ApplicationController
   def index
-    user = User.find_by(commit_index_params)
-    commits = user.commits
-    render json: commit
+    # commits = Commit.joins(:definition).where(user_id: params[:id])
+    commits = Commit.joins(:definition).select('commits.id, commits.message, commits.definition_id, commits.count, definitions.name, definitions.color_id').where(user_id: params[:id])
+    render json: commits
   end
 
   def create
     commit = Commit.new(commit_create_params)
-    if Commit.save
+    if commit.save
+      render json: { status: 'SUCCESS' }
+    else
+      render json: { status: 'ERROR'  }
+    end
+  end
+
+  def destroy
+    commit = Commit.find(commit_destroy_params)
+    if commit.destroy
       render json: { status: 'SUCCESS' }
     else
       render json: { status: 'ERROR' }
@@ -18,11 +25,12 @@ class CommitsController < ApplicationController
 
   private
 
-  def commit_index_params
-    params.require(:user).premit(:uid)
-  end
-
   def commit_create_params
     params.require(:commit).permit(:user_id, :definition_id, :message, :date, :count)
   end
+
+  # def commit_destroy_params
+  #   params.require(:commit).premit(:id)
+  # end
 end
+
