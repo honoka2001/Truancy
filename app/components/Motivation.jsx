@@ -3,9 +3,11 @@ import firebase from "./firebase";
 import { RepositoryFactory } from "../repositories/RepositoryFactory";
 
 const userRepository = RepositoryFactory.get("users");
+const motivationRepository = RepositoryFactory.get("motivations");
 
 function Motivation() {
   const [userData, setUserData] = useState([]);
+  const [motivations, setMotivation] = useState([{ motivation: 0 }]);
 
   async function userPost(uid) {
     try {
@@ -16,6 +18,18 @@ function Motivation() {
       });
       console.log(res);
       setUserData(res.data);
+      getMotivationShow(res.data.id);
+      console.log(motivations);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async function getMotivationShow(id) {
+    try {
+      const res = await motivationRepository.showGet(id);
+      console.log(res);
+      setMotivation(res.data);
     } catch (error) {
       console.log(error);
     }
