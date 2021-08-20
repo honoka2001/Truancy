@@ -4,13 +4,15 @@ import styles from "../styles/MyPage.module.css";
 import Card from "@material-ui/core/Card";
 
 import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
+import Button from "@material-ui/core/Button";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
-import Divider from "@material-ui/core/Divider";
-import InboxIcon from "@material-ui/icons/Inbox";
-import DraftsIcon from "@material-ui/icons/Drafts";
+import PersonalVideoIcon from "@material-ui/icons/PersonalVideo";
+import EditOutlinedIcon from "@material-ui/icons/EditOutlined";
+import CallMadeIcon from "@material-ui/icons/CallMade";
+import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 
 const CommitMotivationChart = dynamic(
     () => import("../components/my_page/CommitMotivationChart"),
@@ -42,6 +44,7 @@ const useStyles = makeStyles((theme) => ({
         display: "inline-block",
         width: "35%",
         height: "40vh",
+        paddingTop: "5vh",
     },
     motivation_card: {
         width: "23%",
@@ -50,7 +53,7 @@ const useStyles = makeStyles((theme) => ({
     },
     kusa_card: {
         width: "100%",
-        height: "25vh",
+        height: "30vh",
         display: "inline-block",
     },
     commits_card: {
@@ -70,15 +73,17 @@ export default function MyPage() {
         <div className={styles.container}>
             <div className={classes.root}>
                 <List component="nav" aria-label="main mailbox folders">
+                    <div className={styles.nav_user_name}>UserName</div>
+                    <Button variant="contained">NewCommits</Button>
                     <ListItem
                         button
                         selected={selectedIndex === 0}
                         onClick={(event) => handleListItemClick(event, 0)}
                     >
                         <ListItemIcon>
-                            <InboxIcon />
+                            <PersonalVideoIcon />
                         </ListItemIcon>
-                        <ListItemText primary="Inbox" />
+                        <ListItemText primary="Dashboard" />
                     </ListItem>
                     <ListItem
                         button
@@ -86,29 +91,37 @@ export default function MyPage() {
                         onClick={(event) => handleListItemClick(event, 1)}
                     >
                         <ListItemIcon>
-                            <DraftsIcon />
+                            <CallMadeIcon />
                         </ListItemIcon>
-                        <ListItemText primary="Drafts" />
+                        <ListItemText primary="Commits" />
                     </ListItem>
-                </List>
-                <Divider />
-                <List component="nav" aria-label="secondary mailbox folder">
                     <ListItem
                         button
                         selected={selectedIndex === 2}
                         onClick={(event) => handleListItemClick(event, 2)}
                     >
-                        <ListItemText primary="Trash" />
+                        <ListItemIcon>
+                            <EditOutlinedIcon />
+                        </ListItemIcon>
+                        <ListItemText primary="Difinition" />
                     </ListItem>
                     <ListItem
                         button
                         selected={selectedIndex === 3}
                         onClick={(event) => handleListItemClick(event, 3)}
                     >
-                        <ListItemText primary="Spam" />
+                        <ListItemIcon>
+                            <AccountCircleIcon />
+                        </ListItemIcon>
+                        <ListItemText primary="User" />
                     </ListItem>
+
+                    <div className={styles.nav_total_commits}>500</div>
+                    <Button variant="contained">LogOut</Button>
                 </List>
             </div>
+
+            <div className={styles.bar}>2021/08/20</div>
             <div className={styles.main_container}>
                 <div className={styles.four_card_container}>
                     <Card className={classes.motivation_card}>
