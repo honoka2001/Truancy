@@ -43,7 +43,21 @@ function Motivation() {
 
   return (
     <div>
+      <h2>
+        目標コミット数：
+        {userData.target}
+      </h2>
 
+      <h2>今日のデータ</h2>
+      <p>
+        モチベーション率(パーセント)：
+        {motivations.dayMotivation}
+      </p>
+
+      {/* <p>
+        詳細パラメータ
+        {motivations.params}
+      </p> */}
     </div>
   );
 }
