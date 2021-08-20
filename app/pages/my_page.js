@@ -26,16 +26,37 @@ const DefinitionChart = dynamic(() => import("../components/my_page/DefinitionCh
 });
 const useStyles = makeStyles((theme) => ({
     root: {
-        width: "100%",
         height: "100vh",
-        maxWidth: 300,
+        width: "20vw",
         margin: 0,
-        display: "inline-block",
         backgroundColor: theme.palette.background.paper,
+        display: "inline-block",
+        position: "fixed",
     },
     chart_card: {
         display: "inline-block",
-        maxWidth: 360,
+        width: "73vw",
+        height: "30vh",
+    },
+    pie_card: {
+        display: "inline-block",
+        width: "35%",
+        height: "40vh",
+    },
+    motivation_card: {
+        width: "23%",
+        height: "14vh",
+        display: "inline-block",
+    },
+    kusa_card: {
+        width: "100%",
+        height: "25vh",
+        display: "inline-block",
+    },
+    commits_card: {
+        width: "65%",
+        height: "40vh",
+        display: "inline-block",
     },
 }));
 export default function MyPage() {
@@ -46,7 +67,7 @@ export default function MyPage() {
         setSelectedIndex(index);
     };
     return (
-        <div>
+        <div className={styles.container}>
             <div className={classes.root}>
                 <List component="nav" aria-label="main mailbox folders">
                     <ListItem
@@ -88,11 +109,35 @@ export default function MyPage() {
                     </ListItem>
                 </List>
             </div>
-            <Card className={classes.chart_card}>
-                <CommitMotivationChart style="display:inline-block" />
-            </Card>
-            <MotivationDetail />
-            <DefinitionChart />
+            <div className={styles.main_container}>
+                <div className={styles.four_card_container}>
+                    <Card className={classes.motivation_card}>
+                        <p>50％</p>
+                    </Card>
+                    <Card className={classes.motivation_card}>
+                        <p>50％</p>
+                    </Card>
+                    <Card className={classes.motivation_card}>
+                        <p>50％</p>
+                    </Card>
+                    <Card className={classes.motivation_card}>
+                        <p>50％</p>
+                    </Card>
+                </div>
+                <Card className={classes.kusa_card}>
+                    <p>くさ</p>
+                </Card>
+                <Card className={classes.chart_card}>
+                    <CommitMotivationChart />
+                </Card>
+                {/* <Card className={classes.radar_card}>
+                    <MotivationDetail />
+                </Card> */}
+                <Card className={classes.commits_card}></Card>
+                <Card className={classes.pie_card}>
+                    <DefinitionChart />
+                </Card>
+            </div>
         </div>
     );
 }
