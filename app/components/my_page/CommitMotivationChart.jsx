@@ -5,10 +5,10 @@ function CommitMotivationChart() {
     const [options, setOptions] = useState({
         chart: {
             id: "basic-bar",
-            width: 400,
+            width: "50%",
         },
         xaxis: {
-            categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999],
+            categories: [1992, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999],
         },
         yaxis: [
             {
@@ -34,14 +34,6 @@ function CommitMotivationChart() {
             data: [20, 30, 35, 40, 39, 50, 60, 81],
         },
     ]);
-    return (
-        <div className="app">
-            <div className="row">
-                <div className="mixed-chart">
-                    <Chart options={options} series={series} type="line" width="500" />
-                </div>
-            </div>
-        </div>
-    );
+    return <Chart options={options} series={series} type="line" height="100%" />;
 }
 export default CommitMotivationChart;
