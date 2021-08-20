@@ -8,6 +8,7 @@ class CommitsController < ApplicationController
   def create
     commit = Commit.new(commit_create_params)
     if commit.save
+      commit.get_daily_total_commits
       render json: { status: 'SUCCESS' }
     else
       render json: { status: 'ERROR'  }
