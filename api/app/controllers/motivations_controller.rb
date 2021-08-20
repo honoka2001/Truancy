@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 class MotivationsController < ApplicationController
-  def index
-    user = User.find(1)
-    date = Date.today
+  def show
+    user = User.find(params[:id])
+    date = Time.current
 
     motivations = user.motivations
     motivation = motivations.find_by(date: date)
