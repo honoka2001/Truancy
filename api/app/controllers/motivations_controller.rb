@@ -5,7 +5,7 @@ class MotivationsController < ApplicationController
     user = User.find(params[:id])
     date = Time.current
 
-    motivations = user.motivations
+    motivations = user.motivations.order(date: "DESC")
     motivation = motivations.find_by(date: date)
     motivation.get_motivation
   end
