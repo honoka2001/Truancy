@@ -8,7 +8,11 @@ class CommitsController < ApplicationController
   def create
     commit = Commit.new(commit_create_params)
     if commit.save
-      commit.get_daily_total_commits
+      if Motivation.find_by(user_id: commit_create_params[:user_id], date: commit_create_params[:date])
+        commit.add_daily_total_commits
+      else
+        Motivation.create(user_id: commit_create_params[:user_id], date: commit_create_params[:date], daily_total_commits: commit_create_params[:count])
+      end
       render json: { status: 'SUCCESS' }
     else
       render json: { status: 'ERROR'  }
