@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  daily_total_commits: 1
+  motivation: 1
+  date: 2021-08-10
+  total_param: 1
+  user: one
+
+two:
+  daily_total_commits: 1
+  motivation: 1
+  date: 2021-08-10
+  total_param: 1
+  user: two
