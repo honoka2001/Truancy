@@ -3,6 +3,9 @@ import Chart from "react-apexcharts";
 
 function MotivationDetail() {
     const [options, setOptions] = useState({
+        chart: {
+            id: "basic-bar",
+        },
         labels: ["P", "I", "D"],
         fill: {
             opacity: 0.5,
@@ -15,14 +18,6 @@ function MotivationDetail() {
             data: [45, 52, 38],
         },
     ]);
-    return (
-        <div className="app">
-            <div className="row">
-                <div className="mixed-chart">
-                    <Chart options={options} series={series} type="radar" width="500" />
-                </div>
-            </div>
-        </div>
-    );
+    return <Chart options={options} series={series} type="radar" height="50%" />;
 }
 export default MotivationDetail;
