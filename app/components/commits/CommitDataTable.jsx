@@ -30,7 +30,7 @@ export default function CommitDataTable(props) {
     {
       field: "definition",
       headerName: "定義名",
-      width: 180,
+      width: 150,
       editable: false,
       renderCell: (params) => (
         <DefinitionName
@@ -48,7 +48,7 @@ export default function CommitDataTable(props) {
       field: "count",
       headerName: "コミット数",
       type: "number",
-      width: 180,
+      width: 147,
       editable: false,
     },
     {
@@ -63,7 +63,7 @@ export default function CommitDataTable(props) {
       field: "削除",
       headerName: "削除",
       sortable: false,
-      width: 120,
+      width: 100,
       disableClickEventBubbling: true,
       editable: false,
       sortable: false,
@@ -89,12 +89,12 @@ export default function CommitDataTable(props) {
   }, [props.userId]);
 
   return (
-    <div style={{ height: 400, width: 1080, margin: "calc(50vh - 247px) auto 0 auto" }}>
+    <div style={{ height: 550, width: 1000, margin: "calc(50vh - 310px) auto 0 auto" }}>
       <h2>コミット一覧</h2>
       <DataGrid
         rows={commits}
         columns={columns}
-        pageSize={5}
+        // pageSize={8}
         disableSelectionOnClick
       />
     </div>
