@@ -40,21 +40,25 @@ Definition.create!(
   color_id: 1,
   user_id: 1
 )
-1..20.times do |n|
-  rand(1..10).times do |i|
+(1..20).each do |n|
+  rand(1..5).times do |i|
     Commit.create!(
-      date: Time.parse("2021/08/#{n + 1}"),
+      date: Time.parse("2021/08/#{n}"),
       message: "test#{i + 1}@test.com",
       definition_id: rand(1..3),
+	  count: rand(1..10),
       user_id: 1
     )
   end
 end
 
-1..20.times do |n|
-  Motivation.create!(
-    date: Time.parse("2021/08/#{n + 1}"),
+(1..20).each do |n|
+  motivation = Motivation.create!(
+    date: Time.parse("2021/08/#{n}"),
     user_id: 1,
-    daily_total_commits: rand(1..20)
+    daily_total_commits: Commit.where(user_id:1,date:Time.parse("2021/08/#{n}")).sum(:count)
   )
+  if n>=4
+		motivation.get_motivation
+  end
 end
