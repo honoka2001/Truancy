@@ -8,6 +8,17 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 srand(88)
+User.create!(
+	name:"test",
+	pass:"pass",
+	uid:"asdfghjkl",
+)
+User.create!(
+	name:"test",
+	pass:"pass",
+	target:15,
+	uid:"lkjhgfdsa",
+)
 Color.create!(
   name: '青',
   code: '#55555FF'
