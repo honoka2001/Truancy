@@ -51,7 +51,7 @@ Definition.create!(
   color_id: 1,
   user_id: 1
 )
-(1..20).each do |n|
+(1..31).each do |n|
   rand(1..5).times do |i|
     Commit.create!(
       date: Time.parse("2021/08/#{n}"),
@@ -63,7 +63,7 @@ Definition.create!(
   end
 end
 
-(1..20).each do |n|
+(1..31).each do |n|
   motivation = Motivation.create!(
     date: Time.parse("2021/08/#{n}"),
     user_id: 1,
