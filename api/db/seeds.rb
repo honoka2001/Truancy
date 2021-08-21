@@ -8,17 +8,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 srand(88)
-User.create!(
-	name:"test",
-	pass:"pass",
-	uid:"asdfghjkl",
-)
-User.create!(
-	name:"test",
-	pass:"pass",
-	target:15,
-	uid:"lkjhgfdsa",
-)
+
 Color.create!(
   name: '青',
   code: '#55555FF'
@@ -51,7 +41,7 @@ Definition.create!(
   color_id: 1,
   user_id: 1
 )
-(1..20).each do |n|
+(1..31).each do |n|
   rand(1..5).times do |i|
     Commit.create!(
       date: Time.parse("2021/08/#{n}"),
@@ -63,7 +53,7 @@ Definition.create!(
   end
 end
 
-(1..20).each do |n|
+(1..31).each do |n|
   motivation = Motivation.create!(
     date: Time.parse("2021/08/#{n}"),
     user_id: 1,
