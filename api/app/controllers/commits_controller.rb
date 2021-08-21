@@ -1,7 +1,7 @@
 class CommitsController < ApplicationController
   def index
     # commits = Commit.joins(:definition).where(user_id: params[:id])
-    commits = Commit.joins(:definition).select('commits.date, commits.count,  commits.message, definitions.name, commits.id').where(user_id: params[:id])
+    commits = Commit.joins(definition: :color).select('colors.code, commits.date, commits.count,  commits.message, definitions.name, commits.id').where(user_id: params[:id])
     render json: commits
   end
 
