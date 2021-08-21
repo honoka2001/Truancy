@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { DataGrid } from "@material-ui/data-grid";
 import axios from "axios";
-import DeleteOutlinedIcon from "@material-ui/icons/DeleteOutlined";
-import { Button, IconButton } from "@material-ui/core";
+import { makeStyles } from '@material-ui/core/styles';
 import DeleteIconButton from "./DeleteIconButton";
+import DefinitionName from "./DefinitionName";
 
 export default function CommitDataTable(props) {
   const [commits, setCommits] = useState([]);
@@ -28,10 +28,15 @@ export default function CommitDataTable(props) {
 
   const columns = [
     {
-      field: "name",
+      field: "definition",
       headerName: "定義名",
       width: 180,
       editable: false,
+      renderCell: (params) => (
+        <DefinitionName
+          params={params}
+        />
+      )
     },
     {
       field: "message",
@@ -42,21 +47,23 @@ export default function CommitDataTable(props) {
     {
       field: "count",
       headerName: "コミット数",
+      type: "number",
       width: 180,
       editable: false,
     },
     {
       field: "date",
+      type: "date",
       headerName: "日付",
       sortable: true,
       editable: false,
       width: 180,
     },
     {
-      field: "",
-      headerName: "",
+      field: "削除",
+      headerName: "削除",
       sortable: false,
-      width: 110,
+      width: 120,
       disableClickEventBubbling: true,
       editable: false,
       sortable: false,
@@ -70,13 +77,19 @@ export default function CommitDataTable(props) {
     },
   ];
 
+  const useStyles = makeStyles({
+    root: {
+
+    }
+  })
+
   useEffect(() => {
     console.log(props.userId);
     commitPost(props.userId);
   }, [props.userId]);
 
   return (
-    <div style={{ height: 400, width: 1080, margin: "auto" }}>
+    <div style={{ height: 400, width: 1080, margin: "calc(50vh - 247px) auto 0 auto" }}>
       <h2>コミット一覧</h2>
       <DataGrid
         rows={commits}
