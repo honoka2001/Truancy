@@ -1,10 +1,11 @@
 import UserRepository from "./userRepository";
 import CommitRepository from "./commitRepository";
+import DefinitionRepository from "./definitionRepository";
 
 const repositories = {
     users: UserRepository,
     commits: CommitRepository,
-    definition: DefinitionRepository,
+    definitions: DefinitionRepository,
 };
 
 export const RepositoryFactory = {
