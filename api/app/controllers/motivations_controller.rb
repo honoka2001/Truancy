@@ -50,7 +50,16 @@ class MotivationsController < ApplicationController
     # 詳細パラメータ配列
     # params = [motivation.sub_param, motivation.diff_param, motivation.avg_param]
 
-    render json: { dayMotivation: dayMotivation }
+    render json: { today_motivation_per: today_motivation_per,
+                   week_date: week_date,
+                   today_total_commits: today_total_commits,
+                   week_total_commits: week_total_commits,
+                   month_total_commits: month_total_commits,
+                   week_motivation_per: week_motivation_per,
+                   week_daily_total_commits: week_daily_total_commits,
+                   week_definition_names: week_definition_names,
+                   week_definition_sum: week_definition_sum,
+                   year_motivations: year_motivations,
+                   total_commits: total_commits }
   end
-
 end
