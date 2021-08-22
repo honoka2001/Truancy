@@ -1,0 +1,18 @@
+.maru_area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 1.15vw;
+    height: 1.15vw;
+    margin: 0.3vw 0.15vw 0.3vw 0.15vw;
+    border-radius: 50%;
+    /* border: solid 0.1px rgb(109, 109, 109); */
+    background-color: rgb(255, 255, 255);
+}
+.maru {
+    width: 60%;
+    height: 60%;
+    border-radius: 50%;
+    /* border: solid 1px rgb(109, 109, 109); */
+    background-color: #00c387;
+}
