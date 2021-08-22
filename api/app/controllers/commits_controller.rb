@@ -11,11 +11,20 @@ class CommitsController < ApplicationController
       if Motivation.find_by(user_id: commit_create_params[:user_id], date: commit_create_params[:date])
         commit.add_daily_total_commits
       else
-        Motivation.create(user_id: commit_create_params[:user_id], date: commit_create_params[:date], daily_total_commits: commit_create_params[:count])
+        Motivation.create(user_id: commit_create_params[:user_id], date: commit_create_params[:date],
+                          daily_total_commits: commit_create_params[:count])
       end
+
+      # モチベーション再計算
+      update_motivation_date = commit.date + 3
+      (commit.date..update_motivation_date).each do |date|
+        motivation = Motivation.find_by(date: date, user_id: commit_create_params[:user_id])
+        motivation.get_motivation
+      end
+
       render json: { status: 'SUCCESS' }
     else
-      render json: { status: 'ERROR'  }
+      render json: { status: 'ERROR' }
     end
   end
 
@@ -33,4 +42,3 @@ class CommitsController < ApplicationController
   #   params.require(:commit).premit(:id)
   # end
 end
-
