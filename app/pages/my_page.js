@@ -1,5 +1,6 @@
 import dynamic from "next/dynamic";
 import styles from "../styles/MyPage.module.css";
+import GrassContainer from "../components/my_page/GrassContainer";
 
 import Card from "@material-ui/core/Card";
 
@@ -138,7 +139,7 @@ export default function MyPage() {
                     </Card>
                 </div>
                 <Card className={classes.kusa_card}>
-                    <p>くさ</p>
+                    <GrassContainer />
                 </Card>
                 <Card className={classes.chart_card}>
                     <CommitMotivationChart />
