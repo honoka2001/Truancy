@@ -40,6 +40,7 @@ const useStyles = makeStyles((theme) => ({
         display: "inline-block",
         width: "73vw",
         height: "30vh",
+        marginBottom: "3vh",
     },
     pie_card: {
         display: "inline-block",
@@ -54,8 +55,11 @@ const useStyles = makeStyles((theme) => ({
     },
     kusa_card: {
         width: "100%",
-        height: "30vh",
-        display: "inline-block",
+        height: "25vh",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        marginBottom: "3vh",
     },
     commits_card: {
         width: "65%",
