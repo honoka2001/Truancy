@@ -44,6 +44,9 @@ class MotivationsController < ApplicationController
     # 今日含めて350日分のモチベーションレコード取得
     year_motivations = motivations.where(date: today - 349..today)
 
+    # コミット総数
+    total_commits = motivations.sum(:daily_total_commits)
+
     # 詳細パラメータ配列
     # params = [motivation.sub_param, motivation.diff_param, motivation.avg_param]
 
