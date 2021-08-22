@@ -29,6 +29,13 @@ class MotivationsController < ApplicationController
     # 今日含めた30日のコミット数
     month_total_commits = motivations.where(date: today - 29..today).sum(:daily_total_commits)
 
+    # 今日含めて8日分のモチベーションレコード取得
+    week_motivations = motivations.where(date: today - 7..today)
+    # カラムを配列として取得
+    week_date = week_motivations.pluck(:date)
+    week_motivation_per = week_motivations.pluck(:motivation)
+    week_daily_total_commits = week_motivations.pluck(:daily_total_commits)
+
     # 詳細パラメータ配列
     # params = [motivation.sub_param, motivation.diff_param, motivation.avg_param]
 
