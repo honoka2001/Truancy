@@ -47,7 +47,7 @@ Definition.create!(
       date: Time.parse("2021/08/#{n}"),
       message: "test#{i + 1}@test.com",
       definition_id: rand(1..3),
-	  count: rand(1..10),
+      count: rand(1..10),
       user_id: 1
     )
   end
@@ -57,9 +57,7 @@ end
   motivation = Motivation.create!(
     date: Time.parse("2021/08/#{n}"),
     user_id: 1,
-    daily_total_commits: Commit.where(user_id:1,date:Time.parse("2021/08/#{n}")).sum(:count)
+    daily_total_commits: Commit.where(user_id: 1, date: Time.parse("2021/08/#{n}")).sum(:count)
   )
-  if n>=4
-		motivation.get_motivation
-  end
+  motivation.get_motivation if n >= 4
 end
