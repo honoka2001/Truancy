@@ -21,7 +21,13 @@ class MotivationsController < ApplicationController
     motivation.get_motivation
 
     # 今日のモチベーション率
-    dayMotivation = motivation.motivation
+    today_motivation_per = motivation.motivation
+    # 今日のコミット数
+    today_total_commits = motivation.daily_total_commits
+    # 今日含めた7日のコミット数
+    week_total_commits = motivations.where(date: today - 6..today).sum(:daily_total_commits)
+    # 今日含めた30日のコミット数
+    month_total_commits = motivations.where(date: today - 29..today).sum(:daily_total_commits)
 
     # 詳細パラメータ配列
     # params = [motivation.sub_param, motivation.diff_param, motivation.avg_param]
