@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from "react";
 import DefinitionIndex from "../components/definitions"
+import DefinitionInput from "../components/definitions/Input";
 import firebase from "../components/firebase";
 import { RepositoryFactory } from "../repositories/RepositoryFactory";
 
@@ -13,16 +14,18 @@ firebase.auth().onAuthStateChanged((user) => {
 export default function Home() {
 
   const [userData, setUserData] = useState([])
+  const [userId, setUserId] = useState('');
   
-  async function userPost() {
+  async function userPost(uid) {
     try {
         const res = await userRepository.post({
             user: {
-              uid: userData.uid
+              uid: uid
             },
         });
-        console.log(res.data.id);
-    } catch (error) {
+        console.log(res);
+        setUserId(res.data.id);
+    } catch (err) {
         console.log(err);
     }
   }
@@ -31,13 +34,14 @@ export default function Home() {
     firebase.auth().onAuthStateChanged((user) => {
       // user.uid => ⭐️ログイン中のユーザのuid
       // user.displayName => ログイン中のユーザーの名前
-      setUserData(user)
+      userPost(user.uid);
     });
   }, [])
 
   return (
     <div>
-      <DefinitionIndex userData={userData} />
+      <DefinitionIndex userId={userId} />
+      <DefinitionInput userId={userId} />
     </div>
   )
 }
