@@ -150,7 +150,6 @@ export default function MyPage() {
                     <p>くさ</p>
                 </Card>
                 <Card className={classes.chart_card}>
-                    <CommitMotivationChart />
                 </Card>
                 {/* <Card className={classes.radar_card}>
 
@@ -190,13 +189,21 @@ export default function MyPage() {
 	  setUserName(user.displayName)
     });
   }, []);
+          <CommitMotivationChart
+            week_date={motivations.week_date}
+            week_motivation_per={motivations.week_motivation_per}
+            week_daily_total_commits={motivations.week_daily_total_commits}
+          />
                     <MotivationDetail />
                 </Card> */}
                 <Card className={classes.commits_card}></Card>
                 <Card className={classes.pie_card}>
-                    <DefinitionChart />
                 </Card>
             </div>
         </div>
     );
+          <DefinitionChart
+		 	 week_definition_names={motivations.week_definition_names}
+		 	 week_definition_sum={motivations.week_definition_sum}
+		  />
 }
