@@ -32,9 +32,9 @@ class MotivationsController < ApplicationController
     # 今日含めて15日分のモチベーションレコード取得
     week_motivations = motivations.where(date: today - 14..today)
     # カラムを配列として取得
-    week_date = week_motivations.pluck(:date)
-    week_motivation_per = week_motivations.pluck(:motivation)
-    week_daily_total_commits = week_motivations.pluck(:daily_total_commits)
+    week_date = week_motivations.order(date: 'ASC').pluck(:date).reverse.map {|e| e.strftime("%m/%d") }
+    week_motivation_per = week_motivations.pluck(:motivation).reverse
+    week_daily_total_commits = week_motivations.pluck(:daily_total_commits).reverse
 
     # 定義の割合
     week_definition_sum = user.commits.where(date: today - 7..today).joins(:definition).group('definitions.name').sum(:count)
