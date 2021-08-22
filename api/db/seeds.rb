@@ -11,11 +11,11 @@ srand(88)
 
 Color.create!(
   name: '青',
-  code: '#55555FF'
+  code: '#5555FF'
 )
 Color.create!(
   name: '緑',
-  code: '#555FF55'
+  code: '#55FF55'
 )
 Color.create!(
   name: '赤',
