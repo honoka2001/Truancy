@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   resources :commits
   resources :users
   resources :definitions
+  resources :colors
 end
