@@ -41,6 +41,9 @@ class MotivationsController < ApplicationController
     week_definition_names = week_definition_sum.keys
     week_definition_sum = week_definition_sum.values
 
+    # 今日含めて350日分のモチベーションレコード取得
+    year_motivations = motivations.where(date: today - 349..today)
+
     # 詳細パラメータ配列
     # params = [motivation.sub_param, motivation.diff_param, motivation.avg_param]
 
