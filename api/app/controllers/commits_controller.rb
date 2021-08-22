@@ -1,13 +1,18 @@
 class CommitsController < ApplicationController
   def index
     # commits = Commit.joins(:definition).where(user_id: params[:id])
-    commits = Commit.joins(:definition).select('commits.id, commits.message, commits.definition_id, commits.count, definitions.name, definitions.color_id').where(user_id: params[:id])
+    commits = Commit.joins(definition: :color).select('colors.code, commits.date, commits.count,  commits.message, definitions.name, commits.id').where(user_id: params[:id])
     render json: commits
   end
 
   def create
     commit = Commit.new(commit_create_params)
     if commit.save
+      if Motivation.find_by(user_id: commit_create_params[:user_id], date: commit_create_params[:date])
+        commit.add_daily_total_commits
+      else
+        Motivation.create(user_id: commit_create_params[:user_id], date: commit_create_params[:date], daily_total_commits: commit_create_params[:count])
+      end
       render json: { status: 'SUCCESS' }
     else
       render json: { status: 'ERROR'  }
@@ -15,12 +20,7 @@ class CommitsController < ApplicationController
   end
 
   def destroy
-    commit = Commit.find(commit_destroy_params)
-    if commit.destroy
-      render json: { status: 'SUCCESS' }
-    else
-      render json: { status: 'ERROR' }
-    end
+    Commit.find(params[:id]).delete
   end
 
   private

@@ -1,12 +1,15 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import App from '../components/App'
-import styles from '../styles/Home.module.css'
+import Head from "next/head";
+import Image from "next/image";
+import App from "../components/App";
+import styles from "../styles/Home.module.css";
+
+
 
 export default function Home() {
-  return (
-    <div className={styles.container}>
-      <App/>
-    </div>
-  )
+
+    return (
+        <div className={styles.container}>
+            <App />
+        </div>
+    );
 }

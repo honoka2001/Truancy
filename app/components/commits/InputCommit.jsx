@@ -4,7 +4,7 @@ import { RepositoryFactory } from "../../repositories/RepositoryFactory";
 const commitRepository = RepositoryFactory.get("commits");
 
 export default function InputCommit(props) {
-  const [definitionId, setDefinitionId] = useState(1);
+  const [definitionId, setDefinitionId] = useState(2);
   const [message, setMessage] = useState("");
   const [date, setDate] = useState("");
   const [count, setCount] = useState(1);
