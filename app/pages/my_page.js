@@ -1,3 +1,8 @@
+import React, { useState, useEffect } from "react";
+import firebase from "../components/firebase";
+import { RepositoryFactory } from "../repositories/RepositoryFactory";
+
+
 import dynamic from "next/dynamic";
 import styles from "../styles/MyPage.module.css";
 
@@ -62,6 +67,10 @@ const useStyles = makeStyles((theme) => ({
         display: "inline-block",
     },
 }));
+
+const userRepository = RepositoryFactory.get("users");
+const motivationRepository = RepositoryFactory.get("motivations");
+
 export default function MyPage() {
     const classes = useStyles();
     const [selectedIndex, setSelectedIndex] = React.useState(1);
@@ -144,6 +153,43 @@ export default function MyPage() {
                     <CommitMotivationChart />
                 </Card>
                 {/* <Card className={classes.radar_card}>
+
+  const [userData, setUserData] = useState([]);
+  const [userName, setUserName] = useState("");
+  const [motivations, setMotivation] = useState([]);
+
+  async function userPost(uid) {
+    try {
+      const res = await userRepository.post({
+        user: {
+          uid: uid,
+        },
+      });
+      console.log(res);
+      setUserData(res.data);
+      getMotivationShow(res.data.id);
+      console.log(motivations);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async function getMotivationShow(id) {
+    try {
+      const res = await motivationRepository.showGet(id);
+      console.log(res);
+      setMotivation(res.data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  useEffect(() => {
+    firebase.auth().onAuthStateChanged((user) => {
+      userPost(user.uid);
+	  setUserName(user.displayName)
+    });
+  }, []);
                     <MotivationDetail />
                 </Card> */}
                 <Card className={classes.commits_card}></Card>
