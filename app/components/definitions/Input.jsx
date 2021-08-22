@@ -52,7 +52,7 @@ export default function DefinitionInput(props) {
   }, [props.userId]);
 
   const option = colors.map((data, index) => (
-    <option value={data.id} key={index}>
+    <option value={data.id} key={index} style={{backgroundColor: data.code}}>
       {data.name}
     </option>
   ));
