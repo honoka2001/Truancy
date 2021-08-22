@@ -133,18 +133,6 @@ export default function MyPage() {
             <div className={styles.bar}>2021/08/20</div>
             <div className={styles.main_container}>
                 <div className={styles.four_card_container}>
-                    <Card className={classes.motivation_card}>
-                        <p>50％</p>
-                    </Card>
-                    <Card className={classes.motivation_card}>
-                        <p>50％</p>
-                    </Card>
-                    <Card className={classes.motivation_card}>
-                        <p>50％</p>
-                    </Card>
-                    <Card className={classes.motivation_card}>
-                        <p>50％</p>
-                    </Card>
                 </div>
                 <Card className={classes.kusa_card}>
                     <p>くさ</p>
@@ -189,6 +177,18 @@ export default function MyPage() {
 	  setUserName(user.displayName)
     });
   }, []);
+          <Card className={classes.motivation_card}>
+            <p>{motivations.today_motivation_per}％</p>
+          </Card>
+          <Card className={classes.motivation_card}>
+            <p>{motivations.today_total_commits}</p>
+          </Card>
+          <Card className={classes.motivation_card}>
+            <p>{motivations.week_total_commits}</p>
+          </Card>
+          <Card className={classes.motivation_card}>
+            <p>{motivations.month_total_commits}</p>
+          </Card>
           <CommitMotivationChart
             week_date={motivations.week_date}
             week_motivation_per={motivations.week_motivation_per}
