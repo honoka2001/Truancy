@@ -36,6 +36,11 @@ class MotivationsController < ApplicationController
     week_motivation_per = week_motivations.pluck(:motivation)
     week_daily_total_commits = week_motivations.pluck(:daily_total_commits)
 
+    # 定義の割合
+    week_definition_sum = user.commits.where(date: today - 7..today).joins(:definition).group('definitions.name').sum(:count)
+    week_definition_names = week_definition_sum.keys
+    week_definition_sum = week_definition_sum.values
+
     # 詳細パラメータ配列
     # params = [motivation.sub_param, motivation.diff_param, motivation.avg_param]
 
