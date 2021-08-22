@@ -57,15 +57,9 @@ end
   motivation = Motivation.create!(
     date: Time.parse("2021/08/#{n}"),
     user_id: 1,
-<<<<<<< HEAD
-    definition_id: 1,
-    message: 'つかれた'
-)
-=======
     daily_total_commits: Commit.where(user_id:1,date:Time.parse("2021/08/#{n}")).sum(:count)
   )
   if n>=4
 		motivation.get_motivation
   end
 end
->>>>>>> af309b830360a4485034f695389f4efa81480e08
