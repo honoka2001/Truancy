@@ -11,11 +11,11 @@ srand(88)
 
 Color.create!(
   name: '青',
-  code: '#55555FF'
+  code: '#5555FF'
 )
 Color.create!(
   name: '緑',
-  code: '#555FF55'
+  code: '#55FF55'
 )
 Color.create!(
   name: '赤',
@@ -41,25 +41,24 @@ Definition.create!(
   color_id: 1,
   user_id: 1
 )
-(1..31).each do |n|
+(Date.parse("2020/08/1")..Date.parse("2021/08/31")).each do |n|
   rand(1..5).times do |i|
     Commit.create!(
-      date: Time.parse("2021/08/#{n}"),
+      date: n,
       message: "test#{i + 1}@test.com",
       definition_id: rand(1..3),
-	  count: rand(1..10),
+      count: rand(1..10),
       user_id: 1
     )
   end
 end
-
-(1..31).each do |n|
+cnt = 1
+(Date.parse("2020/08/1")..Date.parse("2021/08/31")).each do |n|
+	cnt+=1
   motivation = Motivation.create!(
-    date: Time.parse("2021/08/#{n}"),
+    date: n,
     user_id: 1,
-    daily_total_commits: Commit.where(user_id:1,date:Time.parse("2021/08/#{n}")).sum(:count)
+    daily_total_commits: Commit.where(user_id: 1, date: n).sum(:count)
   )
-  if n>=4
-		motivation.get_motivation
-  end
+  motivation.get_motivation if cnt >= 4
 end

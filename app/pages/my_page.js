@@ -1,3 +1,7 @@
+import React, { useState, useEffect } from "react";
+import firebase from "../components/firebase";
+import { RepositoryFactory } from "../repositories/RepositoryFactory";
+
 import dynamic from "next/dynamic";
 import styles from "../styles/MyPage.module.css";
 import GrassContainer from "../components/my_page/GrassContainer";
@@ -67,18 +71,64 @@ const useStyles = makeStyles((theme) => ({
         display: "inline-block",
     },
 }));
+
+const userRepository = RepositoryFactory.get("users");
+const motivationRepository = RepositoryFactory.get("motivations");
+
 export default function MyPage() {
+    var today = new Date();
+    var year = today.getFullYear();
+    var month = today.getMonth() + 1;
+    var day = today.getDate();
     const classes = useStyles();
     const [selectedIndex, setSelectedIndex] = React.useState(1);
 
     const handleListItemClick = (event, index) => {
         setSelectedIndex(index);
     };
+
+    const [userData, setUserData] = useState([]);
+    const [userName, setUserName] = useState("");
+    const [motivations, setMotivation] = useState([]);
+
+    async function userPost(uid) {
+        try {
+            const res = await userRepository.post({
+                user: {
+                    uid: uid,
+                },
+            });
+            console.log(res);
+            setUserData(res.data);
+            getMotivationShow(res.data.id);
+            console.log(motivations);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    async function getMotivationShow(id) {
+        try {
+            const res = await motivationRepository.showGet(id);
+            console.log(res);
+            setMotivation(res.data);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    useEffect(() => {
+        firebase.auth().onAuthStateChanged((user) => {
+            userPost(user.uid);
+            setUserName(user.displayName);
+        });
+    }, []);
+
     return (
         <div className={styles.container}>
             <div className={classes.root}>
                 <List component="nav" aria-label="main mailbox folders">
-                    <div className={styles.nav_user_name}>UserName</div>
+                    <div className={styles.nav_user_name}>{userName}</div>
                     <Button variant="contained">NewCommits</Button>
                     <ListItem
                         button
@@ -121,39 +171,46 @@ export default function MyPage() {
                         <ListItemText primary="User" />
                     </ListItem>
 
-                    <div className={styles.nav_total_commits}>500</div>
+                    <div className={styles.nav_total_commits}>{motivations.total_commits}</div>
                     <Button variant="contained">LogOut</Button>
                 </List>
             </div>
 
-            <div className={styles.bar}>2021/08/20</div>
+            <div className={styles.bar}>{`${year}/${month}/${day}`}</div>
             <div className={styles.main_container}>
                 <div className={styles.four_card_container}>
                     <Card className={classes.motivation_card}>
-                        <p>50％</p>
+                        <p>{motivations.today_motivation_per}％</p>
                     </Card>
                     <Card className={classes.motivation_card}>
-                        <p>50％</p>
+                        <p>{motivations.today_total_commits}</p>
                     </Card>
                     <Card className={classes.motivation_card}>
-                        <p>50％</p>
+                        <p>{motivations.week_total_commits}</p>
                     </Card>
                     <Card className={classes.motivation_card}>
-                        <p>50％</p>
+                        <p>{motivations.month_total_commits}</p>
                     </Card>
                 </div>
                 <Card className={classes.kusa_card}>
-                    <GrassContainer />
+                    <GrassContainer year_motivations={motivations.year_motivations} />
                 </Card>
                 <Card className={classes.chart_card}>
-                    <CommitMotivationChart />
+                    <CommitMotivationChart
+                        week_date={motivations.week_date}
+                        week_motivation_per={motivations.week_motivation_per}
+                        week_daily_total_commits={motivations.week_daily_total_commits}
+                    />
                 </Card>
                 {/* <Card className={classes.radar_card}>
                     <MotivationDetail />
                 </Card> */}
                 <Card className={classes.commits_card}></Card>
                 <Card className={classes.pie_card}>
-                    <DefinitionChart />
+                    <DefinitionChart
+                        week_definition_names={motivations.week_definition_names}
+                        week_definition_sum={motivations.week_definition_sum}
+                    />
                 </Card>
             </div>
         </div>
