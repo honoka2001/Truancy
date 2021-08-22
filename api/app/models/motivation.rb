@@ -19,10 +19,11 @@ class Motivation < ApplicationRecord
       diff_weight = 5
       diff_start_date = date - 1
       diff_end_date = date - 2
+      diff_start_daily_total_commits = Motivation.find_by(user_id: user_id, date: diff_start_date).daily_total_commits
+      diff_end_daily_total_commits = Motivation.find_by(user_id: user_id, date: diff_end_date).daily_total_commits
 
-      diff = Motivation.find_by(user_id: user_id,
-                                date: diff_start_date).daily_total_commits / Motivation.find_by(user_id: user_id,
-                                                                                                date: diff_end_date).daily_total_commits.to_f
+      diff = diff_end_daily_total_commits == 0 ? 0 : diff_start_daily_total_commits.to_f / diff_end_daily_total_commits.to_f
+
       diff_param = diff * diff_weight
     end
 
