@@ -47,6 +47,8 @@ class Motivation < ApplicationRecord
     avg_start_date = date.-2
     avg_end_date = date
     max = Motivation.where(user_id: user_id, date: avg_start_date..avg_end_date).maximum(:total_param)
+    motivation = total_param / max.to_f * 100
+    motivation = 0 if motivation < 0
     update(motivation: total_param / max.to_f * 100)
   end
 end
