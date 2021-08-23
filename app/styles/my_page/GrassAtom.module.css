@@ -12,12 +12,17 @@
 .high_motivation {
     border-radius: 50%;
     /* border: solid 1px rgb(109, 109, 109); */
-    background-color: #006e4d;
+    background-color: #00835c;
+}
+.middle_motivation {
+    border-radius: 50%;
+    /* border: solid 1px rgb(109, 109, 109); */
+    background-color: #00b17c;
 }
 .low_motivation {
     border-radius: 50%;
     /* border: solid 1px rgb(109, 109, 109); */
-    background-color: #00c58a;
+    background-color: #00e9a3;
 }
 .many_commits {
     width: 100%;

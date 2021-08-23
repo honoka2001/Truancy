@@ -21,6 +21,15 @@
     margin-left: 23vw;
     margin-right: 3vw;
 }
+.main_container h2 {
+    display: inline-block;
+    margin: 0;
+    padding: 1vh 1vw 1vh 1vw;
+    font-family: sans-serif;
+    font-weight: 100;
+    font-size: 20px;
+	color: rgb(37, 48, 66);
+}
 .four_card_container {
     display: flex;
     justify-content: space-between;
