@@ -61,8 +61,8 @@ const useStyles = makeStyles((theme) => ({
         width: "100%",
         height: "25vh",
         display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
+        justifyContent: "flex-start",
+        flexDirection: "column",
         marginBottom: "3vh",
     },
     commits_card: {
@@ -193,6 +193,7 @@ export default function MyPage() {
                     </Card>
                 </div>
                 <Card className={classes.kusa_card}>
+                    <h2>Commits & Motivation</h2>
                     <GrassContainer year_motivations={motivations.year_motivations} />
                 </Card>
                 <Card className={classes.chart_card}>
