@@ -42,6 +42,7 @@ class MotivationsController < ApplicationController
     week_definition_sum = week_definition_sum.values
 
     # 今日含めて350日分のモチベーションレコード取得
+	motivations = user.motivations.order(date: 'ASC')
     year_motivations = motivations.where(date: today - 349..today)
 
     # コミット総数
