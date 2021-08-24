@@ -9,6 +9,7 @@ import GrassContainer from "../components/my_page/GrassContainer";
 import Card from "@material-ui/core/Card";
 
 import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
+
 import Button from "@material-ui/core/Button";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
@@ -59,10 +60,44 @@ const useStyles = makeStyles((theme) => ({
         paddingTop: "5vh",
     },
     motivation_card: {
-        width: "23%",
-        height: "14vh",
+        width: "24%",
         display: "inline-block",
+        borderRadius: "20px",
+        boxShadow: "none",
+        textAlign: "center",
+        fontFamily: "Public Sans, sans-serif",
+        padding: theme.spacing(3, 0),
+        "& h3": {
+            fontSize: "1.8rem",
+            margin: "0px",
+        },
+        "& p": {
+            fontSize: ".8rem",
+            margin: "0px",
+            opacity: "0.75",
+            fontWeight: "bold",
+        },
     },
+    motivation_per: {
+        color: theme.palette.primary.darker,
+        backgroundColor: theme.palette.primary.lighter,
+    },
+    daily_commits: {
+        color: theme.palette.info.darker,
+        backgroundColor: theme.palette.info.lighter,
+    },
+    weekly_commits: {
+        color: theme.palette.warning.darker,
+        backgroundColor: theme.palette.warning.lighter,
+    },
+    monthly_commits: {
+        color: theme.palette.error.darker,
+        backgroundColor: theme.palette.error.lighter,
+    },
+    icon_wrapper: {
+        marginBottom: theme.spacing(1),
+    },
+
     kusa_card: {
         width: "100%",
         height: "30vh",
