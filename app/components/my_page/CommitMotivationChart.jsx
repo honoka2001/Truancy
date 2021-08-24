@@ -11,8 +11,7 @@ function CommitMotivationChart(props) {
             },
         },
         fill: {
-            opacity: 0.1,
-            type: ["solid", "gradient"],
+            opacity: [0.1, 1],
         },
 
         stroke: {
@@ -67,7 +66,6 @@ function CommitMotivationChart(props) {
             {
                 name: "モチベーション率",
                 data: props.week_motivation_per,
-                type: "area",
             },
             {
                 name: "コミット数",
@@ -78,7 +76,13 @@ function CommitMotivationChart(props) {
 
     return (
         <div>
-            <Chart options={options} series={series} type="line" height="130%" />;
+            <Chart
+                options={options}
+                series={series}
+                type="line"
+                height="130%"
+            />
+            ;
         </div>
     );
 }

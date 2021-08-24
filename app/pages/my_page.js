@@ -25,12 +25,18 @@ const CommitMotivationChart = dynamic(
         ssr: false,
     }
 );
-const MotivationDetail = dynamic(() => import("../components/my_page/MotivationDetail"), {
-    ssr: false,
-});
-const DefinitionChart = dynamic(() => import("../components/my_page/DefinitionChart"), {
-    ssr: false,
-});
+const MotivationDetail = dynamic(
+    () => import("../components/my_page/MotivationDetail"),
+    {
+        ssr: false,
+    }
+);
+const DefinitionChart = dynamic(
+    () => import("../components/my_page/DefinitionChart"),
+    {
+        ssr: false,
+    }
+);
 const useStyles = makeStyles((theme) => ({
     root: {
         height: "100vh",
@@ -171,7 +177,9 @@ export default function MyPage() {
                         <ListItemText primary="User" />
                     </ListItem>
 
-                    <div className={styles.nav_total_commits}>{motivations.total_commits}</div>
+                    <div className={styles.nav_total_commits}>
+                        {motivations.total_commits}
+                    </div>
                     <Button variant="contained">LogOut</Button>
                 </List>
             </div>
@@ -194,14 +202,18 @@ export default function MyPage() {
                 </div>
                 <Card className={classes.kusa_card}>
                     <h2>Commits & Motivation</h2>
-                    <GrassContainer year_motivations={motivations.year_motivations} />
+                    <GrassContainer
+                        year_motivations={motivations.year_motivations}
+                    />
                     <img src="picker_sumple.svg" width="180%" height="30px" />
                 </Card>
                 <Card className={classes.chart_card}>
                     <CommitMotivationChart
                         week_date={motivations.week_date}
                         week_motivation_per={motivations.week_motivation_per}
-                        week_daily_total_commits={motivations.week_daily_total_commits}
+                        week_daily_total_commits={
+                            motivations.week_daily_total_commits
+                        }
                     />
                 </Card>
                 {/* <Card className={classes.radar_card}>
@@ -210,7 +222,9 @@ export default function MyPage() {
                 <Card className={classes.commits_card}></Card>
                 <Card className={classes.pie_card}>
                     <DefinitionChart
-                        week_definition_names={motivations.week_definition_names}
+                        week_definition_names={
+                            motivations.week_definition_names
+                        }
                         week_definition_sum={motivations.week_definition_sum}
                     />
                 </Card>
