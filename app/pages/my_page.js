@@ -59,7 +59,7 @@ const useStyles = makeStyles((theme) => ({
     },
     kusa_card: {
         width: "100%",
-        height: "25vh",
+        height: "30vh",
         display: "flex",
         justifyContent: "flex-start",
         flexDirection: "column",
@@ -195,6 +195,7 @@ export default function MyPage() {
                 <Card className={classes.kusa_card}>
                     <h2>Commits & Motivation</h2>
                     <GrassContainer year_motivations={motivations.year_motivations} />
+                    <img src="picker_sumple.svg" width="180%" height="30px" />
                 </Card>
                 <Card className={classes.chart_card}>
                     <CommitMotivationChart
