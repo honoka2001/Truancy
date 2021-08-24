@@ -23,9 +23,7 @@ function CommitMotivationChart(props) {
             enabled: false,
         },
         xaxis: {
-            //   categories: props.week_date,
             categories: [1992, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999],
-            // type: "datetime",
         },
         yaxis: [
             {
@@ -66,10 +64,12 @@ function CommitMotivationChart(props) {
             {
                 name: "モチベーション率",
                 data: props.week_motivation_per,
+                type: "area",
             },
             {
                 name: "コミット数",
                 data: props.week_daily_total_commits,
+                type: "line",
             },
         ]);
     }, [props.week_date]);
