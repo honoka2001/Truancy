@@ -20,6 +20,8 @@ import EditOutlinedIcon from "@material-ui/icons/EditOutlined";
 import CallMadeIcon from "@material-ui/icons/CallMade";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 
+import InputCommit from "../components/modal/InputCommit";
+
 const CommitMotivationChart = dynamic(
     () => import("../components/my_page/CommitMotivationChart"),
     {
@@ -131,6 +133,16 @@ export default function MyPage() {
     const [userName, setUserName] = useState("");
     const [motivations, setMotivation] = useState([]);
 
+    const [open, setOpen] = React.useState(false);
+
+    const handleClickOpen = () => {
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
+
     async function userPost(uid) {
         try {
             const res = await userRepository.post({
@@ -169,7 +181,8 @@ export default function MyPage() {
             <div className={classes.root}>
                 <List component="nav" aria-label="main mailbox folders">
                     <div className={styles.nav_user_name}>{userName}</div>
-                    <Button variant="contained">NewCommits</Button>
+                    <Button variant="contained" onClick={handleClickOpen}>NewCommits</Button>
+                        <InputCommit open={open} handleClose={handleClose} userId={userData.id} />
                     <ListItem
                         button
                         selected={selectedIndex === 0}
