@@ -187,17 +187,41 @@ export default function MyPage() {
             <div className={styles.bar}>{`${year}/${month}/${day}`}</div>
             <div className={styles.main_container}>
                 <div className={styles.four_card_container}>
-                    <Card className={classes.motivation_card}>
-                        <p>{motivations.today_motivation_per}％</p>
+                    <Card
+                        className={`${classes.motivation_card} ${classes.motivation_per}`}
+                    >
+                        <div className={classes.icon_wrapper}>
+                            <img src="motivation.svg" />
+                        </div>
+                        <h3>{motivations.today_motivation_per}％</h3>
+                        <p>Motivation</p>
                     </Card>
-                    <Card className={classes.motivation_card}>
-                        <p>{motivations.today_total_commits}</p>
+                    <Card
+                        className={`${classes.motivation_card} ${classes.daily_commits}`}
+                    >
+                        <div className={classes.icon_wrapper}>
+                            <img src="daily_commits.svg" />
+                        </div>
+                        <h3>{motivations.today_total_commits}</h3>
+                        <p>Daily Commits</p>
                     </Card>
-                    <Card className={classes.motivation_card}>
-                        <p>{motivations.week_total_commits}</p>
+                    <Card
+                        className={`${classes.motivation_card} ${classes.weekly_commits}`}
+                    >
+                        <div className={classes.icon_wrapper}>
+                            <img src="weekly_commits.svg" />
+                        </div>
+                        <h3>{motivations.week_total_commits}</h3>
+                        <p>Weekly Commits</p>
                     </Card>
-                    <Card className={classes.motivation_card}>
-                        <p>{motivations.month_total_commits}</p>
+                    <Card
+                        className={`${classes.motivation_card} ${classes.monthly_commits}`}
+                    >
+                        <div className={classes.icon_wrapper}>
+                            <img src="monthly_commits.svg" />
+                        </div>
+                        <h3>{motivations.month_total_commits}</h3>
+                        <p>Monthly Commits</p>
                     </Card>
                 </div>
                 <Card className={classes.kusa_card}>
