@@ -43,7 +43,6 @@ const useStyles = makeStyles((theme) => ({
         height: "100vh",
         width: "20vw",
         margin: 0,
-        backgroundColor: theme.palette.background.paper,
         display: "inline-block",
         position: "fixed",
     },
