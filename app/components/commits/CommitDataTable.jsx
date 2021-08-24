@@ -60,8 +60,8 @@ export default function CommitDataTable(props) {
       width: 180,
     },
     {
-      field: "削除",
-      headerName: "削除",
+      field: " ",
+      headerName: " ",
       sortable: false,
       width: 100,
       disableClickEventBubbling: true,
