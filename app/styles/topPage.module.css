@@ -1,0 +1,104 @@
+
+.header {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  text-align: center;
+  left: 50%;
+  top: 50%;
+}
+
+.center {
+  display: inline-block;
+  margin: auto;
+  align-items: center;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.logo {
+  width: 250px;
+}
+
+.title {
+  font-size: 80px;
+  margin-top: -30px;
+  margin-bottom: 30px;
+  color: #6ED346;
+  font-weight: 500;
+}
+
+.googleBtn {
+  width: 250px;
+}
+
+.contents {
+  margin: 30px auto 60px auto;
+  box-sizing: border-box;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.contentsWrp {
+  width: 75%;
+  height: 100%;
+  margin: 0 auto;
+  text-align: center;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+}
+
+.imgContents {
+  width: 300px;
+  text-align: left;
+  display: inline-block;
+  box-sizing: border-box;
+}
+
+.img {
+  width: 100%;
+}
+
+.textContents {
+  width: 580px;
+  margin: auto 70px;
+  text-align: left;
+  text-align: left;
+  display: inline-block;
+}
+
+.textContentsLeft {
+  width: 580px;
+  margin: auto 90px auto 10px;
+  text-align: left;
+  display: inline-block;
+}
+
+.textContentsTitle {
+  font-size: 28px;
+  line-height: 1.5;
+  color: #253042;
+}
+
+.textContentsDescription {
+  font-size: 16px;
+  line-height: 1.75;
+  color: #253042;
+  opacity: 0.85;
+}
+
+.footer {
+  width: 100vw;
+  height: 30vh;
+  display: flex;
+  text-align: center;
+  left: 50%;
+  top: 50%;
+  background: #f7f7f7;
+}
+
+.footerTitle {
+  font-size: 24px;
+  color: #253042;
+}
