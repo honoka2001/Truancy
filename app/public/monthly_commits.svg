@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="60" height="60" viewBox="0 0 60 60">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: url(#linear-gradient);
+      }
+
+      .cls-2 {
+        fill: #7b0a2e;
+      }
+    </style>
+    <linearGradient id="linear-gradient" x1="0.144" y1="0.157" x2="0.814" y2="0.869" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#fbdcd0"/>
+      <stop offset="1" stop-color="#f3c2ba"/>
+    </linearGradient>
+  </defs>
+  <g id="monthly_commits" transform="translate(-2570 -163)">
+    <circle id="楕円形_1" data-name="楕円形 1" class="cls-1" cx="30" cy="30" r="30" transform="translate(2570 163)"/>
+    <path id="Icon_awesome-calendar-week" data-name="Icon awesome-calendar-week" class="cls-2" d="M0,25.555A2.579,2.579,0,0,0,2.507,28.2H20.894A2.579,2.579,0,0,0,23.4,25.555V10.574H0ZM3.343,14.98a.862.862,0,0,1,.836-.881H19.223a.862.862,0,0,1,.836.881v8.837c0,.485-.376,1.025-.836,1.025H4.179c-.46,0-.836-.54-.836-1.025ZM20.894,3.525H18.387V.881A.862.862,0,0,0,17.551,0H15.88a.862.862,0,0,0-.836.881V3.525H8.358V.881A.862.862,0,0,0,7.522,0H5.85a.862.862,0,0,0-.836.881V3.525H2.507A2.579,2.579,0,0,0,0,6.168V8.812H23.4V6.168A2.579,2.579,0,0,0,20.894,3.525Z" transform="translate(2588.299 178.901)"/>
+  </g>
+</svg>
