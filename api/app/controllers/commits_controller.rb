@@ -19,7 +19,9 @@ class CommitsController < ApplicationController
       update_motivation_date = commit.date + 3
       (commit.date..update_motivation_date).each do |date|
         motivation = Motivation.find_by(date: date, user_id: commit_create_params[:user_id])
-        motivation.get_motivation
+		if motivation
+        	motivation.get_motivation
+		end
       end
 
       render json: { status: 'SUCCESS' }
