@@ -12,7 +12,7 @@ function GrassAtom(props) {
         let few_low = motivation < 40 && commits < 10;
         let empty = commits == 0;
 
-        if (empty) return <div className={style.empty_commit}></div>;
+        if (empty) return <div className={styles.empty_commit}></div>;
         else if (many_high)
             return <div className={`${styles.many_commits} ${styles.high_motivation}`}></div>;
         else if (many_middle)
