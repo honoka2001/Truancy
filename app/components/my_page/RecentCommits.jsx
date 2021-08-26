@@ -15,6 +15,15 @@ function RecentCommits(props) {
                             <div className={styles.column_date}>
                                 {data.date.slice(5).replace("-", "/")}
                             </div>
+
+                            <div className={styles.column_count}>
+                                <div className={styles.column_count_value}>
+                                    {data.count}
+                                </div>
+                                <div className={styles.column_count_commits}>
+                                    commits
+                                </div>
+                            </div>
                             <div
                                 className={styles.column_color}
                                 style={{ backgroundColor: data.code }}
@@ -22,11 +31,9 @@ function RecentCommits(props) {
                             <div className={styles.column_name}>
                                 {data.name}
                             </div>
+
                             <div className={styles.column_message}>
                                 {data.message}
-                            </div>
-                            <div className={styles.column_name}>
-                                {data.code}
                             </div>
                         </ListItem>
                         <Divider />

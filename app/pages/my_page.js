@@ -112,6 +112,8 @@ const useStyles = makeStyles((theme) => ({
         width: "65%",
         height: "40vh",
         display: "inline-block",
+        overflow: "scroll",
+        color: "rgb(37, 48, 66)",
     },
 }));
 
@@ -182,11 +184,17 @@ export default function MyPage() {
             <div className={classes.root}>
                 <List component="nav" aria-label="main mailbox folders">
                     <div className={styles.nav_user_name}>{userName}</div>
-                    <Button variant="contained" onClick={handleClickOpen}>NewCommits</Button>
-                        <InputCommit open={open} handleClose={handleClose} userId={userData.id} />
+                    <Button variant="contained" onClick={handleClickOpen}>
+                        NewCommits
+                    </Button>
+                    <InputCommit
+                        open={open}
+                        handleClose={handleClose}
+                        userId={userData.id}
+                    />
                     <ListItem
                         button
-                        selected={selectedIndex === 0}
+                        selected
                         onClick={(event) => handleListItemClick(event, 0)}
                     >
                         <ListItemIcon>
