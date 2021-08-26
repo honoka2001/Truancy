@@ -22,6 +22,7 @@ import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import RecentCommits from "../components/my_page/RecentCommits";
 
 import InputCommit from "../components/modal/InputCommit";
+import FaceIcon from "@material-ui/icons/Face";
 
 const CommitMotivationChart = dynamic(
     () => import("../components/my_page/CommitMotivationChart"),
@@ -115,6 +116,79 @@ const useStyles = makeStyles((theme) => ({
         overflow: "scroll",
         color: "rgb(37, 48, 66)",
     },
+    nav: {
+        height: "100vh",
+        boxShadow: `4px 4px 20px 0 ${theme.palette.grey[500_8]}`,
+    },
+    logo: {
+        display: "block",
+        margin: "0 5%",
+    },
+    nav_user_name: {
+        display: "flex",
+        alignItems: "center",
+        color: theme.palette.grey[700],
+        backgroundColor: theme.palette.grey[200],
+        borderRadius: "8px",
+        textAlign: "center",
+        padding: "1vh 2vw",
+        margin: "4vh 3vh",
+        "& h3": {
+            fontSize: ".8rem",
+            textAlign: "center",
+            marginLeft: "10px",
+        },
+    },
+    btn_wrapper: {
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        marginBottom: "3vh",
+    },
+    btn_new_commits: {
+        color: "rgb(255, 255, 255)",
+        backgroundColor: theme.palette.primary.main,
+        boxShadow: `4px 4px 8px 0 ${theme.palette.primary.lighter}`,
+        padding: "1vh 1.5vw",
+        "&:hover": {
+            color: "rgb(255, 255, 255)",
+            backgroundColor: theme.palette.primary.dark,
+            boxShadow: "none",
+        },
+    },
+    btn_logout: {
+        color: "rgb(255, 255, 255)",
+        backgroundColor: theme.palette.error.main,
+        boxShadow: `4px 4px 8px 0 ${theme.palette.error.lighter}`,
+        padding: "1vh 1.5vw",
+        "&:hover": {
+            color: "rgb(255, 255, 255)",
+            backgroundColor: theme.palette.error.dark,
+            boxShadow: "none",
+        },
+    },
+    total_commits: {
+        color: theme.palette.primary.darker,
+        backgroundColor: theme.palette.grey[500_8],
+        width: "70%",
+        display: "inline-block",
+        borderRadius: "15px",
+        boxShadow: `2px 2px 4px 0 ${theme.palette.grey[500_8]}`,
+        textAlign: "center",
+        fontFamily: "Public Sans, sans-serif",
+        padding: theme.spacing(3, 3),
+        margin: "12vh 15% 3vh",
+        "& h3": {
+            fontSize: "1.8rem",
+            margin: "0px",
+        },
+        "& p": {
+            fontSize: ".8rem",
+            margin: "0px",
+            opacity: "0.75",
+            fontWeight: "bold",
+        },
+    },
 }));
 
 const userRepository = RepositoryFactory.get("users");
@@ -182,61 +256,84 @@ export default function MyPage() {
     return (
         <div className={styles.container}>
             <div className={classes.root}>
-                <List component="nav" aria-label="main mailbox folders">
-                    <div className={styles.nav_user_name}>{userName}</div>
-                    <Button variant="contained" onClick={handleClickOpen}>
-                        NewCommits
-                    </Button>
-                    <InputCommit
-                        open={open}
-                        handleClose={handleClose}
-                        userId={userData.id}
-                    />
-                    <ListItem
-                        button
-                        selected
-                        onClick={(event) => handleListItemClick(event, 0)}
-                    >
-                        <ListItemIcon>
-                            <PersonalVideoIcon />
-                        </ListItemIcon>
-                        <ListItemText primary="Dashboard" />
-                    </ListItem>
-                    <ListItem
-                        button
-                        selected={selectedIndex === 1}
-                        onClick={(event) => handleListItemClick(event, 1)}
-                    >
-                        <ListItemIcon>
-                            <CallMadeIcon />
-                        </ListItemIcon>
-                        <ListItemText primary="Commits" />
-                    </ListItem>
-                    <ListItem
-                        button
-                        selected={selectedIndex === 2}
-                        onClick={(event) => handleListItemClick(event, 2)}
-                    >
-                        <ListItemIcon>
-                            <EditOutlinedIcon />
-                        </ListItemIcon>
-                        <ListItemText primary="Difinition" />
-                    </ListItem>
-                    <ListItem
-                        button
-                        selected={selectedIndex === 3}
-                        onClick={(event) => handleListItemClick(event, 3)}
-                    >
-                        <ListItemIcon>
-                            <AccountCircleIcon />
-                        </ListItemIcon>
-                        <ListItemText primary="User" />
-                    </ListItem>
+                <List
+                    component="nav"
+                    aria-label="main mailbox folders"
+                    className={classes.nav}
+                >
+                    <img src="truancy_logo.svg" className={classes.logo} />
 
-                    <div className={styles.nav_total_commits}>
-                        {motivations.total_commits}
+                    <div className={classes.nav_user_name}>
+                        <FaceIcon />
+                        <h3>{userName}</h3>
                     </div>
-                    <Button variant="contained">LogOut</Button>
+                    <div className={classes.btn_wrapper}>
+                        <Button
+                            variant="contained"
+                            startIcon={<img src="AddIcon.svg" />}
+                            onClick={handleClickOpen}
+                            className={classes.btn_new_commits}
+                        >
+                            New Commits
+                        </Button>
+                        <InputCommit
+                            open={open}
+                            handleClose={handleClose}
+                            userId={userData.id}
+                        />
+                    </div>
+
+                    <div className={classes.nav_list}>
+                        <ListItem
+                            button
+                            selected={selectedIndex === 0}
+                            onClick={(event) => handleListItemClick(event, 0)}
+                            className={{ selected: classes.selectedTab }}
+                        >
+                            <ListItemIcon>
+                                <PersonalVideoIcon />
+                            </ListItemIcon>
+                            <ListItemText primary="Dashboard" />
+                        </ListItem>
+                        <ListItem
+                            button
+                            selected={selectedIndex === 1}
+                            onClick={(event) => handleListItemClick(event, 1)}
+                        >
+                            <ListItemIcon>
+                                <CallMadeIcon />
+                            </ListItemIcon>
+                            <ListItemText primary="Commits" />
+                        </ListItem>
+                        <ListItem
+                            button
+                            selected={selectedIndex === 2}
+                            onClick={(event) => handleListItemClick(event, 2)}
+                        >
+                            <ListItemIcon>
+                                <EditOutlinedIcon />
+                            </ListItemIcon>
+                            <ListItemText primary="Difinition" />
+                        </ListItem>
+                    </div>
+
+                    <Card className={classes.total_commits}>
+                        <div className={classes.icon_wrapper}>
+                            <img src="tree.svg" />
+                        </div>
+
+                        <h3> {motivations.total_commits}</h3>
+                        <p>Total Commits</p>
+                    </Card>
+
+                    <div className={classes.btn_wrapper}>
+                        <Button
+                            variant="contained"
+                            className={classes.btn_logout}
+                        >
+                            Logout
+                        </Button>
+                    </div>
                 </List>
             </div>
 
