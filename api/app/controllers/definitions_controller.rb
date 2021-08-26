@@ -14,7 +14,7 @@ class DefinitionsController < ApplicationController
     if definition.save
       render json: definition
     else
-      render json: {error: definition.errors, status: 422}
+      render json: { error: definition.errors, status: 422 }
     end
   end
 

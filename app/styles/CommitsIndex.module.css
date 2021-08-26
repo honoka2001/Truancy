@@ -1,0 +1,36 @@
+.bar {
+    width: 100%;
+    margin-left: 300px;
+    height: 13vh;
+    background-color: rgba(255, 255, 255, 0.118);
+    backdrop-filter: blur(10px);
+    position: fixed;
+    z-index: 100;
+}
+.container {
+    display: flex;
+    flex-direction: row;
+}
+.nav_container {
+    width: 300px;
+    height: 100vh;
+}
+.main_container {
+    width: 73vw;
+    margin-left: 23vw;
+    margin-right: 3vw;
+}
+.main_container h2 {
+    display: inline-block;
+    margin: 0;
+    padding: 1vh 1vw 1vh 1vw;
+    font-family: sans-serif;
+    font-weight: 100;
+    font-size: 20px;
+    color: rgb(37, 48, 66);
+}
+.four_card_container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2vh;
+}

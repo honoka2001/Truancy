@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import firebase from "../components/firebase";
 import { RepositoryFactory } from "../repositories/RepositoryFactory";
-
+import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
 import styles from "../styles/MyPage.module.css";
 import GrassContainer from "../components/my_page/GrassContainer";
@@ -203,6 +203,7 @@ const userRepository = RepositoryFactory.get("users");
 const motivationRepository = RepositoryFactory.get("motivations");
 
 export default function MyPage() {
+    const router = useRouter();
     var today = new Date();
     var year = today.getFullYear();
     var month = today.getMonth() + 1;
@@ -212,6 +213,11 @@ export default function MyPage() {
 
     const handleListItemClick = (event, index) => {
         setSelectedIndex(index);
+        if (index == 0) {
+            router.push("/my_page");
+        } else if (index == 1) {
+            router.push("/TestCommitDisplay");
+        }
     };
 
     const [userData, setUserData] = useState([]);

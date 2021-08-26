@@ -32,7 +32,7 @@ class MotivationsController < ApplicationController
     # 今日含めて15日分のモチベーションレコード取得
     week_motivations = motivations.where(date: today - 14..today)
     # カラムを配列として取得
-    week_date = week_motivations.order(date: 'ASC').pluck(:date).reverse.map {|e| e.strftime("%m/%d") }
+    week_date = week_motivations.order(date: 'ASC').pluck(:date).reverse.map { |e| e.strftime('%m/%d') }
     week_motivation_per = week_motivations.pluck(:motivation).reverse
     week_daily_total_commits = week_motivations.pluck(:daily_total_commits).reverse
 
@@ -42,18 +42,18 @@ class MotivationsController < ApplicationController
     week_definition_sum = week_definition_sum.values
 
     # 今日含めて350日分のモチベーションレコード取得
-	motivations = user.motivations.order(date: 'ASC')
+    motivations = user.motivations.order(date: 'ASC')
     year_motivations = motivations.where(date: today - 349..today)
 
     # コミット総数
     total_commits = motivations.sum(:daily_total_commits)
 
-	# 最近のコミット表示
-	recent_commits = user.commits.joins(definition: :color).select('colors.code, 
-		commits.date, 
-		commits.count,  
-		commits.message, 
-		definitions.name, 
+    # 最近のコミット表示
+    recent_commits = user.commits.joins(definition: :color).select('colors.code,
+		commits.date,
+		commits.count,
+		commits.message,
+		definitions.name,
 		commits.id').order("commits.date": 'DESC').limit(20)
 
     # 詳細パラメータ配列
@@ -70,6 +70,6 @@ class MotivationsController < ApplicationController
                    week_definition_sum: week_definition_sum,
                    year_motivations: year_motivations,
                    total_commits: total_commits,
-				   recent_commits: recent_commits}
+                   recent_commits: recent_commits }
   end
 end
