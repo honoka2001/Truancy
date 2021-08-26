@@ -60,7 +60,7 @@ Definition.create!(
 Definition.create!(
   name: '部活(水泳)の練習',
   detail: '1時間で1commit',
-  color_id: 4,
+  color_id: 5,
   user_id: 1
 )
 (Date.parse('2020/08/1')..Date.parse('2021/08/26')).each do |n|
