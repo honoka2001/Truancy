@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { RepositoryFactory } from "../repositories/RepositoryFactory";
 import firebase from "../components/firebase";
+import { useRouter } from "next/router";
 import CommitDataTable from "../components/commits/CommitDataTable";
 import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
 import List from "@material-ui/core/List";
@@ -169,6 +170,7 @@ const useStyles = makeStyles((theme) => ({
 export default function CommitModal() {
     const classes = useStyles();
     const [userId, setUserId] = useState("");
+    const router = useRouter();
 
     var today = new Date();
     var year = today.getFullYear();
@@ -178,6 +180,11 @@ export default function CommitModal() {
 
     const handleListItemClick = (event, index) => {
         setSelectedIndex(index);
+        if (index == 0) {
+            router.push("/my_page");
+        } else if (index == 1) {
+            router.push("/TestCommitDisplay");
+        }
     };
 
     const [userData, setUserData] = useState([]);
