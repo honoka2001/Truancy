@@ -85,6 +85,22 @@ const GRADIENTS = {
 
 // Create a theme instance.
 const theme = createTheme({
+    overrides: {
+        MuiListItem: {
+            // For ListItem, change this to MuiListItem
+            root: {
+                "&$selected": {
+                    // this is to refer to the prop provided by M-UI
+                    backgroundColor: "orange", // updated backgroundColor
+                    "&:hover": {
+                        // this is to refer to the prop provided by M-UI
+                        backgroundColor: "blue", // updated backgroundColor
+                    },
+                },
+            },
+        },
+        MuiListItemButton: {},
+    },
     palette: {
         common: { black: "#000", white: "#fff" },
         primary: { ...PRIMARY },

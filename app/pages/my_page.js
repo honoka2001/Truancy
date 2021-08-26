@@ -19,6 +19,7 @@ import PersonalVideoIcon from "@material-ui/icons/PersonalVideo";
 import EditOutlinedIcon from "@material-ui/icons/EditOutlined";
 import CallMadeIcon from "@material-ui/icons/CallMade";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
+import RecentCommits from "../components/my_page/RecentCommits";
 
 import InputCommit from "../components/modal/InputCommit";
 
@@ -111,6 +112,8 @@ const useStyles = makeStyles((theme) => ({
         width: "65%",
         height: "40vh",
         display: "inline-block",
+        overflow: "scroll",
+        color: "rgb(37, 48, 66)",
     },
 }));
 
@@ -181,11 +184,17 @@ export default function MyPage() {
             <div className={classes.root}>
                 <List component="nav" aria-label="main mailbox folders">
                     <div className={styles.nav_user_name}>{userName}</div>
-                    <Button variant="contained" onClick={handleClickOpen}>NewCommits</Button>
-                        <InputCommit open={open} handleClose={handleClose} userId={userData.id} />
+                    <Button variant="contained" onClick={handleClickOpen}>
+                        NewCommits
+                    </Button>
+                    <InputCommit
+                        open={open}
+                        handleClose={handleClose}
+                        userId={userData.id}
+                    />
                     <ListItem
                         button
-                        selected={selectedIndex === 0}
+                        selected
                         onClick={(event) => handleListItemClick(event, 0)}
                     >
                         <ListItemIcon>
@@ -290,7 +299,11 @@ export default function MyPage() {
                 {/* <Card className={classes.radar_card}>
                     <MotivationDetail />
                 </Card> */}
-                <Card className={classes.commits_card}></Card>
+                <Card className={classes.commits_card}>
+                    <RecentCommits
+                        recent_commits={motivations.recent_commits}
+                    />
+                </Card>
                 <Card className={classes.pie_card}>
                     <DefinitionChart
                         week_definition_names={
