@@ -1,0 +1,25 @@
+.column_date {
+    width: 5vw;
+}
+.column_count {
+    width: 7vw;
+    display: flex;
+    align-items: flex-end;
+}
+.column_count_value {
+    font-size: 17px;
+}
+.column_count_commits {
+    font-size: 13px;
+    margin-left: 3px;
+    margin-bottom: 1px;
+}
+.column_name {
+    width: 13vw;
+}
+.column_color {
+    width: 3px;
+    height: 20px;
+    margin-right: 6px;
+    display: inline-block;
+}
