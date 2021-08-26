@@ -120,6 +120,13 @@ const useStyles = makeStyles((theme) => ({
         height: "100vh",
         boxShadow: `4px 4px 20px 0 ${theme.palette.grey[500_8]}`,
     },
+    nav_list: {
+        padding: "1rem 0 0",
+        color: theme.palette.grey[500],
+    },
+    list_item: {
+        paddingLeft: "2.5rem",
+    },
     logo: {
         display: "block",
         margin: "0 5%",
@@ -200,7 +207,7 @@ export default function MyPage() {
     var month = today.getMonth() + 1;
     var day = today.getDate();
     const classes = useStyles();
-    const [selectedIndex, setSelectedIndex] = React.useState(1);
+    const [selectedIndex, setSelectedIndex] = React.useState(0);
 
     const handleListItemClick = (event, index) => {
         setSelectedIndex(index);
@@ -288,7 +295,7 @@ export default function MyPage() {
                             button
                             selected={selectedIndex === 0}
                             onClick={(event) => handleListItemClick(event, 0)}
-                            className={{ selected: classes.selectedTab }}
+                            className={classes.list_item}
                         >
                             <ListItemIcon>
                                 <PersonalVideoIcon />
@@ -299,6 +306,7 @@ export default function MyPage() {
                             button
                             selected={selectedIndex === 1}
                             onClick={(event) => handleListItemClick(event, 1)}
+                            className={classes.list_item}
                         >
                             <ListItemIcon>
                                 <CallMadeIcon />
@@ -309,6 +317,7 @@ export default function MyPage() {
                             button
                             selected={selectedIndex === 2}
                             onClick={(event) => handleListItemClick(event, 2)}
+                            className={classes.list_item}
                         >
                             <ListItemIcon>
                                 <EditOutlinedIcon />
