@@ -1,8 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1280" height="720" viewBox="0 0 1280 720">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="164" height="51" viewBox="0 0 164 51">
   <defs>
     <style>
       .cls-1 {
-        clip-path: url(#clip-カスタムサイズ_1);
+        clip-path: url(#clip-path);
       }
 
       .cls-2 {
@@ -26,77 +26,55 @@
       }
 
       .cls-6 {
-        fill: #6ed346;
-        stroke: #fff;
-        stroke-width: 15px;
+        fill: #fff;
       }
 
       .cls-7 {
-        fill: #feff00;
-      }
-
-      .cls-7, .cls-8 {
-        opacity: 0.7;
+        fill: #6ed346;
       }
 
       .cls-8 {
-        fill: #9afe32;
+        filter: url(#楕円形_4);
       }
 
       .cls-9 {
-        stroke: none;
-      }
-
-      .cls-10 {
-        fill: none;
-      }
-
-      .cls-11 {
-        filter: url(#長方形_13);
-      }
-
-      .cls-12 {
-        filter: url(#楕円形_2);
+        filter: url(#パス_10);
       }
     </style>
-    <filter id="楕円形_2" x="200.029" y="267.596" width="129" height="129" filterUnits="userSpaceOnUse">
+    <clipPath id="clip-path">
+      <rect id="長方形_59" data-name="長方形 59" width="164" height="51"/>
+    </clipPath>
+    <filter id="パス_10" x="2.931" y="2.411" width="45.176" height="45.176" filterUnits="userSpaceOnUse">
       <feOffset dy="3" input="SourceAlpha"/>
       <feGaussianBlur stdDeviation="5" result="blur"/>
       <feFlood flood-opacity="0.078"/>
       <feComposite operator="in" in2="blur"/>
       <feComposite in="SourceGraphic"/>
     </filter>
-    <filter id="長方形_13" x="1158.5" y="-245.615" width="245.942" height="322.808" filterUnits="userSpaceOnUse">
-      <feOffset dy="5" input="SourceAlpha"/>
-      <feGaussianBlur stdDeviation="3" result="blur-2"/>
-      <feFlood flood-opacity="0.161"/>
+    <filter id="楕円形_4" x="5.193" y="4.672" width="40.654" height="40.654" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="5" result="blur-2"/>
+      <feFlood flood-opacity="0.078"/>
       <feComposite operator="in" in2="blur-2"/>
       <feComposite in="SourceGraphic"/>
     </filter>
-    <clipPath id="clip-カスタムサイズ_1">
-      <rect width="1280" height="720"/>
-    </clipPath>
   </defs>
-  <g id="カスタムサイズ_1" data-name="カスタムサイズ – 1" class="cls-1">
-    <path id="パス_9" data-name="パス 9" class="cls-2" d="M59.736,0H35.37V-136.24H0v-22.794H95.106v22.794H59.736ZM131-92.748q9.694-14.148,30.392-14.148a27.669,27.669,0,0,1,12.052,2.62L170.3-81.22a22.97,22.97,0,0,0-12.576-3.668Q131-84.888,131-46.636V0H105.586V-103.49H131Zm76.766-10.742v56.068q0,30.13,20.96,30.13t20.96-30.13V-103.49H275.1v60.784q0,46.112-46.374,46.112T182.352-42.706V-103.49ZM393.786,0H368.9V-9.432q-11,12.838-32.75,12.838T301.431-13.362q-12.969-16.768-12.969-39.3t13.231-38.383Q314.924-106.9,335.622-106.9q22.008,0,33.274,13.1v-9.694h24.89ZM371.778-51.876q0-14.41-8.122-23.711a26.4,26.4,0,0,0-20.829-9.3q-12.707,0-20.7,9.039t-7.991,23.973q0,14.934,8.122,24.1t20.96,9.17q12.838,0,20.7-8.908T371.778-51.876Zm68.644-42.182q10.742-12.838,31.7-12.838,35.632,0,35.632,43.754V0H482.6V-54.758q0-32.75-20.174-32.75-22.008,0-22.008,35.108V0H415.008V-103.49h25.414ZM599.456-76.5Q589.762-86.2,577.71-86.2q-14.148,0-22.27,10.218t-8.122,25.021q0,14.8,9.17,24.235a29.9,29.9,0,0,0,22.27,9.432q11.266,0,20.7-9.956V-2.882q-11,6.288-25.414,6.288-22.532,0-37.466-15.982T521.642-51.614q0-23.056,15.327-39.169T575.352-106.9a44.523,44.523,0,0,1,24.1,6.55Zm6.288-26.986h29.344L662.074-41.4l28.3-62.094h28.82L645.83,43.23h-28.3L649.5-15.982Z" transform="translate(432 447)"/>
-    <g id="グループ_3" data-name="グループ 3">
-      <g id="グループ_2" data-name="グループ 2">
+  <g id="truancy_logo" class="cls-1">
+    <path id="パス_9" data-name="パス 9" class="cls-2" d="M9.157-134.655H5.422V-155.54H0v-3.494H14.579v3.494H9.157Zm10.925-14.218a5.25,5.25,0,0,1,4.659-2.169,4.241,4.241,0,0,1,1.848.4l-.482,3.534a3.521,3.521,0,0,0-1.928-.562q-4.1,0-4.1,5.864v7.149h-3.9v-15.865h3.9Zm11.768-1.647v8.6q0,4.619,3.213,4.619t3.213-4.619v-8.6h3.9v9.318q0,7.069-7.109,7.069T27.954-141.2v-9.318Zm28.516,15.865H56.551V-136.1a6.247,6.247,0,0,1-5.02,1.968,6.385,6.385,0,0,1-5.322-2.57,9.564,9.564,0,0,1-1.988-6.025,8.879,8.879,0,0,1,2.028-5.884,6.47,6.47,0,0,1,5.2-2.431,6.359,6.359,0,0,1,5.1,2.008v-1.486h3.816Zm-3.374-7.952a5.325,5.325,0,0,0-1.245-3.635,4.047,4.047,0,0,0-3.193-1.426,4.039,4.039,0,0,0-3.173,1.386,5.343,5.343,0,0,0-1.225,3.675,5.365,5.365,0,0,0,1.245,3.694,4.1,4.1,0,0,0,3.213,1.406,4.028,4.028,0,0,0,3.173-1.366A5.445,5.445,0,0,0,56.992-142.607Zm10.523-6.466a5.976,5.976,0,0,1,4.86-1.968q5.462,0,5.462,6.707v9.679H73.981v-8.394q0-5.021-3.093-5.02-3.374,0-3.374,5.382v8.033h-3.9v-15.865h3.9Zm24.379,2.692a4.608,4.608,0,0,0-3.334-1.487,4.124,4.124,0,0,0-3.414,1.566,5.971,5.971,0,0,0-1.245,3.836,5.108,5.108,0,0,0,1.406,3.715,4.584,4.584,0,0,0,3.414,1.446,4.315,4.315,0,0,0,3.173-1.526v3.736a7.711,7.711,0,0,1-3.9.964,7.53,7.53,0,0,1-5.743-2.45,8.442,8.442,0,0,1-2.29-5.984,8.391,8.391,0,0,1,2.35-6,7.785,7.785,0,0,1,5.884-2.471,6.825,6.825,0,0,1,3.694,1Zm.964-4.137h4.5L101.494-141l4.338-9.519h4.418L99-128.028H94.665l4.9-9.077Z" transform="translate(51.192 174.727)"/>
+    <g id="グループ_3" data-name="グループ 3" transform="translate(0 1.778)">
+      <g id="グループ_2" data-name="グループ 2" transform="translate(0 0)">
         <g id="グループ_1" data-name="グループ 1">
-          <rect id="長方形_5" data-name="長方形 5" class="cls-3" width="300" height="90" rx="45" transform="translate(114.529 214.596)"/>
-          <rect id="長方形_6" data-name="長方形 6" class="cls-4" width="300" height="90" rx="45" transform="translate(432 242.192) rotate(120)"/>
-          <rect id="長方形_7" data-name="長方形 7" class="cls-5" width="300" height="90" rx="45" transform="translate(176 197.192) rotate(60)"/>
-          <g class="cls-12" transform="matrix(1, 0, 0, 1, 0, 0)">
-            <g id="楕円形_2-2" data-name="楕円形 2" class="cls-6" transform="translate(215.03 279.6)">
-              <circle class="cls-9" cx="49.5" cy="49.5" r="49.5"/>
-              <circle class="cls-10" cx="49.5" cy="49.5" r="42"/>
-            </g>
+          <rect id="長方形_5" data-name="長方形 5" class="cls-3" width="45.989" height="13.797" rx="6.898" transform="translate(2.525 2.668)"/>
+          <rect id="長方形_6" data-name="長方形 6" class="cls-4" width="45.989" height="13.797" rx="6.898" transform="translate(51.192 6.898) rotate(120)"/>
+          <rect id="長方形_7" data-name="長方形 7" class="cls-5" width="45.989" height="13.797" rx="6.898" transform="translate(11.948 0) rotate(60)"/>
+          <g class="cls-9" transform="matrix(1, 0, 0, 1, 0, -1.78)">
+            <path id="パス_10-2" data-name="パス 10" class="cls-6" d="M7.588,0A7.588,7.588,0,1,1,0,7.588,7.588,7.588,0,0,1,7.588,0Z" transform="translate(17.93 14.41)"/>
+          </g>
+          <g class="cls-8" transform="matrix(1, 0, 0, 1, 0, -1.78)">
+            <circle id="楕円形_4-2" data-name="楕円形 4" class="cls-7" cx="5.327" cy="5.327" r="5.327" transform="translate(20.19 16.67)"/>
           </g>
         </g>
       </g>
-    </g>
-    <path id="パス_7" data-name="パス 7" class="cls-7" d="M45,0H255a45,45,0,0,1,0,90H45A45,45,0,0,1,45,0Z" transform="translate(1139.442 -241.615) rotate(60)"/>
-    <g class="cls-11" transform="matrix(1, 0, 0, 1, 0, 0)">
-      <rect id="長方形_13-2" data-name="長方形 13" class="cls-8" width="300" height="90" rx="45" transform="translate(1395.44 -196.62) rotate(120)"/>
     </g>
   </g>
 </svg>
