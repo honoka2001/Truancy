@@ -182,61 +182,84 @@ export default function MyPage() {
     return (
         <div className={styles.container}>
             <div className={classes.root}>
-                <List component="nav" aria-label="main mailbox folders">
-                    <div className={styles.nav_user_name}>{userName}</div>
-                    <Button variant="contained" onClick={handleClickOpen}>
-                        NewCommits
-                    </Button>
-                    <InputCommit
-                        open={open}
-                        handleClose={handleClose}
-                        userId={userData.id}
-                    />
-                    <ListItem
-                        button
-                        selected
-                        onClick={(event) => handleListItemClick(event, 0)}
-                    >
-                        <ListItemIcon>
-                            <PersonalVideoIcon />
-                        </ListItemIcon>
-                        <ListItemText primary="Dashboard" />
-                    </ListItem>
-                    <ListItem
-                        button
-                        selected={selectedIndex === 1}
-                        onClick={(event) => handleListItemClick(event, 1)}
-                    >
-                        <ListItemIcon>
-                            <CallMadeIcon />
-                        </ListItemIcon>
-                        <ListItemText primary="Commits" />
-                    </ListItem>
-                    <ListItem
-                        button
-                        selected={selectedIndex === 2}
-                        onClick={(event) => handleListItemClick(event, 2)}
-                    >
-                        <ListItemIcon>
-                            <EditOutlinedIcon />
-                        </ListItemIcon>
-                        <ListItemText primary="Difinition" />
-                    </ListItem>
-                    <ListItem
-                        button
-                        selected={selectedIndex === 3}
-                        onClick={(event) => handleListItemClick(event, 3)}
-                    >
-                        <ListItemIcon>
-                            <AccountCircleIcon />
-                        </ListItemIcon>
-                        <ListItemText primary="User" />
-                    </ListItem>
+                <List
+                    component="nav"
+                    aria-label="main mailbox folders"
+                    className={classes.nav}
+                >
+                    <img src="truancy_logo.svg" className={classes.logo} />
 
-                    <div className={styles.nav_total_commits}>
-                        {motivations.total_commits}
+                    <div className={classes.nav_user_name}>
+                        <FaceIcon />
+                        <h3>{userName}</h3>
                     </div>
-                    <Button variant="contained">LogOut</Button>
+                    <div className={classes.btn_wrapper}>
+                        <Button
+                            variant="contained"
+                            startIcon={<img src="AddIcon.svg" />}
+                            onClick={handleClickOpen}
+                            className={classes.btn_new_commits}
+                        >
+                            New Commits
+                        </Button>
+                        <InputCommit
+                            open={open}
+                            handleClose={handleClose}
+                            userId={userData.id}
+                        />
+                    </div>
+
+                    <div className={classes.nav_list}>
+                        <ListItem
+                            button
+                            selected={selectedIndex === 0}
+                            onClick={(event) => handleListItemClick(event, 0)}
+                            className={{ selected: classes.selectedTab }}
+                        >
+                            <ListItemIcon>
+                                <PersonalVideoIcon />
+                            </ListItemIcon>
+                            <ListItemText primary="Dashboard" />
+                        </ListItem>
+                        <ListItem
+                            button
+                            selected={selectedIndex === 1}
+                            onClick={(event) => handleListItemClick(event, 1)}
+                        >
+                            <ListItemIcon>
+                                <CallMadeIcon />
+                            </ListItemIcon>
+                            <ListItemText primary="Commits" />
+                        </ListItem>
+                        <ListItem
+                            button
+                            selected={selectedIndex === 2}
+                            onClick={(event) => handleListItemClick(event, 2)}
+                        >
+                            <ListItemIcon>
+                                <EditOutlinedIcon />
+                            </ListItemIcon>
+                            <ListItemText primary="Difinition" />
+                        </ListItem>
+                    </div>
+
+                    <Card className={classes.total_commits}>
+                        <div className={classes.icon_wrapper}>
+                            <img src="tree.svg" />
+                        </div>
+
+                        <h3> {motivations.total_commits}</h3>
+                        <p>Total Commits</p>
+                    </Card>
+
+                    <div className={classes.btn_wrapper}>
+                        <Button
+                            variant="contained"
+                            className={classes.btn_logout}
+                        >
+                            Logout
+                        </Button>
+                    </div>
                 </List>
             </div>
 
