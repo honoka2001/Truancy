@@ -1,3 +1,4 @@
+
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="164" height="51" viewBox="0 0 164 51">
   <defs>
     <style>
@@ -45,12 +46,14 @@
       <rect id="長方形_59" data-name="長方形 59" width="164" height="51"/>
     </clipPath>
     <filter id="パス_10" x="2.931" y="2.411" width="45.176" height="45.176" filterUnits="userSpaceOnUse">
+
       <feOffset dy="3" input="SourceAlpha"/>
       <feGaussianBlur stdDeviation="5" result="blur"/>
       <feFlood flood-opacity="0.078"/>
       <feComposite operator="in" in2="blur"/>
       <feComposite in="SourceGraphic"/>
     </filter>
+
     <filter id="楕円形_4" x="5.193" y="4.672" width="40.654" height="40.654" filterUnits="userSpaceOnUse">
       <feOffset dy="3" input="SourceAlpha"/>
       <feGaussianBlur stdDeviation="5" result="blur-2"/>
