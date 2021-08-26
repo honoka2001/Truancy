@@ -3,7 +3,7 @@
 class MotivationsController < ApplicationController
   def show
     user = User.find(params[:id])
-    today = Date.today
+    today = Time.current.to_date
 
     motivations = user.motivations.order(date: 'DESC')
 
