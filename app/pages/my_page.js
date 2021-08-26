@@ -168,6 +168,7 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: theme.palette.error.main,
         boxShadow: `4px 4px 8px 0 ${theme.palette.error.lighter}`,
         padding: "1vh 1.5vw",
+        borderRadius: "20px",
         "&:hover": {
             color: "rgb(255, 255, 255)",
             backgroundColor: theme.palette.error.dark,
