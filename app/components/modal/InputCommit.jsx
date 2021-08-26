@@ -17,6 +17,7 @@ import Select from "@material-ui/core/Select";
 
 import axios from "axios";
 import { RepositoryFactory } from "../../repositories/RepositoryFactory";
+import InputDefinition from "./InputDefinition";
 
 const commitRepository = RepositoryFactory.get("commits");
 
@@ -27,6 +28,9 @@ export default function InputCommit(props) {
       minWidth: 300,
       maxWidth: 500,
     },
+    // dialog_padding: {
+    //   padding: 20,
+    // },
     chips: {
       display: "flex",
       flexWrap: "wrap",
@@ -36,6 +40,23 @@ export default function InputCommit(props) {
     },
     noLabel: {
       marginTop: theme.spacing(3),
+    },
+    btn_new_definition: {
+      color: "rgb(255, 255, 255)",
+      backgroundColor: theme.palette.primary.main,
+      boxShadow: `4px 4px 8px 0 ${theme.palette.primary.lighter}`,
+      margin: "0 0 0 0",
+      fontSize: "calc(0.8rem - 2px)",
+      "&:hover": {
+        color: "rgb(255, 255, 255)",
+        backgroundColor: theme.palette.primary.dark,
+        boxShadow: "none",
+      },
+    },
+    btn_dialog_action: {
+      padding: 0,
+      fontSize: "calc(1rem - 4px)",
+      marginLeft: 12,
     },
   }));
 
@@ -55,7 +76,13 @@ export default function InputCommit(props) {
   const [definitions, setDefinitions] = useState([]);
   const [definitionId, setDefinitionId] = useState("");
   const [message, setMessage] = useState("");
-  const [date, setDate] = useState("");
+  const today = new Date();
+  let year = today.getFullYear();
+  let month = today.getMonth() + 1;
+  let day = today.getDate();
+  if (month < 10) month = "0" + month;
+  if (day < 10) day = "0" + day;
+  const [date, setDate] = useState(year + "-" + month + "-" + day);
   const [count, setCount] = useState(1);
 
   const handleDefinitionChange = (e) => {
@@ -71,6 +98,15 @@ export default function InputCommit(props) {
     setCount(e.target.value);
   };
 
+  const [definitionOpen, setDefinitionOpen] = useState(false);
+
+  const handleClickDefinitionOpen = () => {
+    setDefinitionOpen(true);
+  };
+  const handleClickDefinitionClose = () => {
+    definitionPost(props.userId);
+    setDefinitionOpen(false);
+  };
   const definitionPost = (userId) => {
     try {
       axios
@@ -120,6 +156,7 @@ export default function InputCommit(props) {
       open={props.open}
       onClose={props.handleClose}
       aria-labelledby="form-dialog-title"
+      className={classes.dialog_padding}
     >
       <DialogTitle id="form-dialog-title">New Commit</DialogTitle>
       <DialogContent>
@@ -167,21 +204,42 @@ export default function InputCommit(props) {
             }}
             defaultValue="1"
             onChange={handleCountChaneg}
+            InputProps={{ inputProps: { min: 1, step: "1" } }}
           />
-          <input
-            type="date"
-            defaultValue={new Date()}
-            onChange={handleDateChange}
-          />
+          <input type="date" value={date} onChange={handleDateChange} />
         </FormControl>
       </DialogContent>
-      <DialogActions>
-        <Button onClick={props.handleClose} color="primary">
-          Cancel
-        </Button>
-        <Button onClick={handleSubmit} color="primary">
-          Subscribe
-        </Button>
+      <DialogActions style={{ justifyContent: "flex-start" }}>
+        <div style={{ width: 300, margin: "-5px auto 10px auto" }}>
+          <Button
+            variant="contained"
+            startIcon={<img src="AddIcon.svg" />}
+            onClick={handleClickDefinitionOpen}
+            className={classes.btn_new_definition}
+          >
+            New Definition
+          </Button>
+          <Button
+            onClick={props.handleClose}
+            color="primary"
+            className={classes.btn_dialog_action}
+          >
+            Cancel
+          </Button>
+          <Button
+            onClick={handleSubmit}
+            color="primary"
+            className={classes.btn_dialog_action}
+          >
+            Subscribe
+          </Button>
+          <InputDefinition
+            open={definitionOpen}
+            handleClickDefinitionClose={handleClickDefinitionClose}
+            userId={props.userId}
+            definitionPost={definitionPost}
+          />
+        </div>
       </DialogActions>
     </Dialog>
   );
