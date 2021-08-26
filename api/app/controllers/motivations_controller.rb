@@ -48,6 +48,14 @@ class MotivationsController < ApplicationController
     # コミット総数
     total_commits = motivations.sum(:daily_total_commits)
 
+	# 最近のコミット表示
+	recent_commits = user.commits.joins(definition: :color).select('colors.code, 
+		commits.date, 
+		commits.count,  
+		commits.message, 
+		definitions.name, 
+		commits.id').order("commits.date": 'DESC').limit(20)
+
     # 詳細パラメータ配列
     # params = [motivation.sub_param, motivation.diff_param, motivation.avg_param]
 
@@ -61,6 +69,7 @@ class MotivationsController < ApplicationController
                    week_definition_names: week_definition_names,
                    week_definition_sum: week_definition_sum,
                    year_motivations: year_motivations,
-                   total_commits: total_commits }
+                   total_commits: total_commits,
+				   recent_commits: recent_commits}
   end
 end
