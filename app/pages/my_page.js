@@ -19,6 +19,7 @@ import PersonalVideoIcon from "@material-ui/icons/PersonalVideo";
 import EditOutlinedIcon from "@material-ui/icons/EditOutlined";
 import CallMadeIcon from "@material-ui/icons/CallMade";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
+import RecentCommits from "../components/my_page/RecentCommits";
 
 const CommitMotivationChart = dynamic(
     () => import("../components/my_page/CommitMotivationChart"),
@@ -277,7 +278,11 @@ export default function MyPage() {
                 {/* <Card className={classes.radar_card}>
                     <MotivationDetail />
                 </Card> */}
-                <Card className={classes.commits_card}></Card>
+                <Card className={classes.commits_card}>
+                    <RecentCommits
+                        recent_commits={motivations.recent_commits}
+                    />
+                </Card>
                 <Card className={classes.pie_card}>
                     <DefinitionChart
                         week_definition_names={

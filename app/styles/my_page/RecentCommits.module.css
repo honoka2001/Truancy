@@ -1,0 +1,12 @@
+.column_date {
+    width: 5vw;
+}
+.column_name {
+    width: 13vw;
+}
+.column_color {
+    width: 3px;
+    height: 20px;
+    margin-right: 6px;
+    display: inline-block;
+}
