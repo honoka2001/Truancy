@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import firebase from "./firebase";
 import { RepositoryFactory } from "../repositories/RepositoryFactory";
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
-
+import { useRouter } from "next/router";
 import top from "../styles/topPage.module.css";
 
 const userRepository = RepositoryFactory.get("users");
@@ -17,6 +17,7 @@ const uiConfig = {
 };
 
 function App() {
+    const router = useRouter();
     const [userData, setUserData] = useState([]);
 
     async function userPost(uid) {
@@ -26,6 +27,7 @@ function App() {
                     uid: uid,
                 },
             });
+            router.push("/my_page");
             console.log(res);
         } catch (error) {
             console.log(error);
