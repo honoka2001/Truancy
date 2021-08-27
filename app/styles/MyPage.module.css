@@ -3,9 +3,13 @@
     margin-left: 300px;
     height: 13vh;
     background-color: rgba(255, 255, 255, 0.118);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(20px);
     position: fixed;
     z-index: 100;
+}
+.bar p {
+    font-size: 30px;
+    margin-left: 5vw;
 }
 .container {
     display: flex;
@@ -28,7 +32,7 @@
     font-family: sans-serif;
     font-weight: 100;
     font-size: 20px;
-	color: rgb(37, 48, 66);
+    color: rgb(37, 48, 66);
 }
 .four_card_container {
     display: flex;
