@@ -208,7 +208,7 @@ export default function MyPage() {
     var year = today.getFullYear();
     var month = today.getMonth() + 1;
     var day = today.getDate();
-    var hours = ("0" + (today.getHours() + 1)).slice(-2);
+    var hours = ("0" + today.getHours()).slice(-2);
     var minutes = ("0" + (today.getMinutes() + 1)).slice(-2);
     const classes = useStyles();
     const [selectedIndex, setSelectedIndex] = React.useState(0);
