@@ -1,4 +1,7 @@
 # Truancy
+モチベーションを管理し継続をサポートするアプリ
+
+![Truancy-画面](https://user-images.githubusercontent.com/80940288/204319287-0e60cc0b-5a65-4b9e-a403-026b5d54fe72.png)
 
 <details>
 
